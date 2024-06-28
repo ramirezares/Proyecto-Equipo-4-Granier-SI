@@ -9,6 +9,14 @@ export default {
     extend: {
       colors: {
         'naranja-unimet': '#FF8200',
+        'beige-granier': '#AD986E',
+        'azul-oscuro-granier': '#34394B',
+        'paypal': '#003087',
+        'gris-campo': '#444444',
+        'azul-claro-granier': '#00A3E0',	
+        'azul-producto': '#4D546E',
+        'blanco-hueso': '#D9D9D6',
+
       },
     },
   },
