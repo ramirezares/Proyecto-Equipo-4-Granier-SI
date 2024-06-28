@@ -21,7 +21,7 @@ const ChangingNavBar = () => {
     return (
       <div className="offline">
         <Link to="/">
-          <img src="/MetroEats.png" alt="" height="90" />
+          <img className="w-16 " src="/MetroEats.png" alt=""  />
         </Link>
         <button onClick={handleLogin}>Regístrate</button>
         <button onClick={handleLogin}>Inicia Sesión</button>
