@@ -1,0 +1,17 @@
+.body{
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.contanier{
+    display: flex;
+    flex-direction: row;
+}
+
+.information{
+    width: 50%;
+}
+
+.message{
+    width: 50%;
+}

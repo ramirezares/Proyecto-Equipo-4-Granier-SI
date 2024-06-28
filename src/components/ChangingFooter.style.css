@@ -1,0 +1,17 @@
+.granier-info{
+    background-color: #AD986E ;
+    color: #ffffff;
+    text-align: center;
+}
+
+.metroeats-info{
+    background-color: #FF8200;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+}
+
+.noDecoration{
+    text-decoration: none;
+    color: #ffffff;
+}
