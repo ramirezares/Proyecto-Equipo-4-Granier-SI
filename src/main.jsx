@@ -1,16 +1,14 @@
-//import React from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import Sugestions from './pages/Sugestions'
 
-//import { WebRouter } from './router/WebRouter.jsx'
-//import {RouterProvider} from "react-router-dom"
-//import Register from './pages/Register.jsx'
+import { WebRouter } from './router/WebRouter.jsx'
+import {RouterProvider} from "react-router-dom"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <Sugestions></Sugestions>
+    <React.StrictMode>
+    <RouterProvider router={WebRouter}/>
+    </React.StrictMode>
 )
 
-/*<React.StrictMode>
-    <RouterProvider router={WebRouter}/>
-  </React.StrictMode>*/
+/**/
