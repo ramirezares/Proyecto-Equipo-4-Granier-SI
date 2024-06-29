@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import "./HomeEmployee.style.css";
 import Hero from "../ui/Hero";
