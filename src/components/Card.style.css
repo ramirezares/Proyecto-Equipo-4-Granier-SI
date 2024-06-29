@@ -1,0 +1,28 @@
+.card {
+    background-color: #dcdcdc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .card p {
+    margin: 10px 0;
+  }
+  
+  .card button {
+    background-color: #b8860b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

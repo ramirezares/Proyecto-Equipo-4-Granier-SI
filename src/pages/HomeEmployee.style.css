@@ -1,187 +1,22 @@
+.bordered-brown-background {
+    padding: 10px 30px;
+    background-color:  #AD986E;
+    color: white;
+    border: #ffffff solid;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+  }
 
-.loginPage1 {
+  .btn-contanier{
     display: flex;
-    flex-direction: column; 
+
+    justify-content: center;
+    margin-top: 20px;
   }
-  
-  .navBar {
-    position:relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    margin: 0;
-    background-color: #34394B;
-    display: flex;
-    align-items: center; 
-    gap: 80px; 
-    padding: 0 20px; 
-    box-sizing: border-box;
-  } 
-  
-  .logo, .logoGranier {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    clip-path: inset(0 20% 0 0);
-  }
-  
-   .logoGranier img {
-    height: 50px; 
-    object-fit: contain;
-    left:-70px;
-  }
-  
-  .logo img {
-    height: 50px; 
-    object-fit: contain;
-  }
-  
-  .imageBar {
-    top: 70px;
-    width: 100%;
-    height:600px;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    overflow: hidden;
-  }
-   
-  .interactionBar {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    gap: 20px;
-    padding:20px;;
-    background-color: #34394B;
-    box-sizing: border-box;
-  }
-  
-  .interactionBar_img {
-    width:50%; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    position: relative;
-  } 
-  
-  .interactionBar_img img {
-    max-width: 200%;
-    max-height: 300px;
-    height: auto;
-    width: auto;
-    object-fit: contain;
-  } 
-  
-  .interactionBar_buttons {
-    width: 50%;
+
+  .buttons{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap:20px
-  }
-  
-  .customStyleButtons2 {
-    width: 300px;           
-    height: 50px;           
-    box-sizing: border-box;
-    padding: 10px 20px; 
-    background-color: #AD986E;
-    color: black;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 15px;
-    border: 4px solid white; 
-    cursor: pointer; 
-    text-align: center;
-    text-decoration: none; 
-    display: block; 
-    border-radius: 20px; 
-  }  
-  
-  .rightsBar {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    color:white;
-    background-color: #AD986E;
-    height: 70px;
-  }
-  
-  
-  .rightsBar .prove {
-    margin: 0;
-  }
-  
-  .rightsBar a {
-    color: white; 
-    text-decoration: underline;
-  }
-  
-  .rightsBar a:hover {
-    color: #FFA500; 
-  }
-  
-  .unimet {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    width: 100%;
-    align-items: center;
-    height: 100%;
-  }  
-  
-  .customStyleButtons {
-    padding: 10px 50px;
-    background-color:  #34394B;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    font-size: 20px;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-  }
-   
-  .bottomImage {
-    position: absolute;
-    width: 50%;
-    height:260px;
-    top:140px;
-  } 
-  
-  .topImage {
-    opacity: 2; 
-    width: 100%; 
-    height: 100%;
-    object-fit: cover;
-    filter:brightness(0.5)
-  } 
-  
-  .overlayText {
-    position: absolute;
-    top: 70%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    color: white; 
-    font-size: 40px;
-    font-weight: bold;
-    font-style: italic; 
-    background-color: rgba(0, 0, 0, 0); 
-    padding: 10px; 
-    border-radius: 5px;
-    text-align: center;
-    text-shadow: 
-      -1px -1px 0 #000,  
-       1px -1px 0 #000,
-      -1px  1px 0 #000,
-       1px  1px 0 #000; 
   }

@@ -1,0 +1,49 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    color: black;
+  }
+  
+  .default-hero {
+    background-image: url('path/to/default-hero-image.jpg');
+  }
+  
+  .granier-hero {
+    background-image: url('path/to/granier-hero-image.jpg');
+  }
+  
+  .granier-admin-hero {
+    background-image: url('path/to/granier-hero-image.jpg');
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin: 0;
+  }
+  
+  .hero p {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .hero button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .hero button:hover {
+    background-color: #0056b3;
+  }
+  

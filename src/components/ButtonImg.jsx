@@ -1,28 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ButtonImg.style.css";
 
-const ButtomImg = ({ link, backgroundImage1, backgroundImage2 }) => {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate(link);
-  };
-
+const ButtonImg = ({ link, backgroundImage1, backgroundImage2, className }) => {
   const buttonStyle = {
-    backgroundImage: `url(${backgroundImage1}), url(${backgroundImage2})`,
-    backgroundSize: "85%, cover",
-    backgroundPosition: "center, center",
+    backgroundImage: `url(${backgroundImage2})`, // Usamos la segunda imagen como fondo principal
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   };
 
-  return <button className="rest" onClick={onClick} style={buttonStyle} />;
+  const overlayStyle = {
+    backgroundImage: `url(${backgroundImage1})`, // Usamos la primera imagen como overlay
+    backgroundSize: "85%",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
+
+  return (
+    <Link to={link} className={`button-img ${className}`} style={buttonStyle}>
+      <div className="overlay" style={overlayStyle}></div>
+    </Link>
+  );
 };
 
-ButtomImg.propTypes = {
+ButtonImg.propTypes = {
   link: PropTypes.string.isRequired,
   backgroundImage1: PropTypes.string.isRequired,
   backgroundImage2: PropTypes.string.isRequired,
+  className: PropTypes.string
 };
 
-export default ButtomImg;
+ButtonImg.defaultProps = {
+  className: ''
+};
+
+export default ButtonImg;

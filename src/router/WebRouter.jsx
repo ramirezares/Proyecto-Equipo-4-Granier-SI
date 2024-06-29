@@ -6,6 +6,7 @@ import LayoutPublic from "../layout/LayoutPublic.jsx";
 import LandingPage from "../pages/LandingPage.jsx";
 import Register from "../pages/Register.jsx";
 import Login from "../pages/Login.jsx";
+import Granier from "../pages/Granier.jsx";
 import Contact from "../pages/Contact.jsx";
 import HomeEmployee from "../pages/HomeEmployee.jsx";
 import InProgress from "../pages/InProgress.jsx";
@@ -39,6 +40,11 @@ export const WebRouter = createBrowserRouter([
         /*Completar registro*/
         path: "/register/complete",
         element: <InProgress />,
+      },
+      {
+        /*Granier*/
+        path: "/granier",
+        element: <Granier />,
       },
       {
         /*Contacto*/
