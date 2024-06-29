@@ -15,3 +15,7 @@
 .message{
     width: 50%;
 }
+
+.information, .message {
+    width: 50%;
+  }
