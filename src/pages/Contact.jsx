@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <>
     <div className="body mx-20">
-      <h1 style={{ color: '#34394B' }} className="text-4xl font-bold mb-4">Información de contacto</h1>
+      <h1 style={{ color: '#34394B' }} className="text-4xl font-bold mb-4 mt-12 p-2.5">Información de contacto</h1>
       <div className="container mx-auto p-4">
         <div className="flex flex-wrap justify-center mb-4">
             <div className="information w-1/2 pr-4">
