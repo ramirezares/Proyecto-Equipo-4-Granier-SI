@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import LayoutPublic from "../layout/LayoutPublic.jsx";
 
+import AboutUs from "../pages/AboutUs.jsx"
 import LandingPage from "../pages/LandingPage.jsx";
 import Register from "../pages/Register.jsx";
 import Login from "../pages/Login.jsx";
@@ -54,7 +55,7 @@ export const WebRouter = createBrowserRouter([
       {
         /*About Us*/
         path: "/granier/aboutUs",
-        element: <InProgress />,
+        element: <AboutUs />,
       },
       {
         /*HomeEmployee*/
