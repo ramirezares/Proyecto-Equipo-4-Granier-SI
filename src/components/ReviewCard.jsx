@@ -7,7 +7,7 @@ const ReviewCard = ({ review, onNext, onPrev }) => {
     <div className="review-card">
       <button className="review-arrow left" onClick={onPrev}>◀</button>
       <div className="review-avatar">
-        <img src="d" alt="Err" />
+      <img src="/Logoperfilusuarioengranier.png" alt="" />
       </div>
       <div className="review-text">
         <p>{review.user}</p>

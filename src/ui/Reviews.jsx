@@ -2,13 +2,7 @@ import { useState } from "react";
 import ReviewCard from "../components/ReviewCard";
 import './styles/Reviews.style.css';
 
-const reviews = [
-  { user: "Usuario 1", text: "Reseña del Usuario 1" },
-  { user: "Usuario 2", text: "Reseña del Usuario 2" },
-  { user: "Usuario 3", text: "Reseña del Usuario 3" },
-];
-
-const Reseñas = () => {
+const Reseñas = (props) => {
   const [currentReview, setCurrentReview] = useState(0);
 
   const handleNext = () => {
@@ -21,27 +15,26 @@ const Reseñas = () => {
 
   return (
     <div className="reseñas">
-      <h2>Sección de Reseñas</h2>
       <div className="reseñas-content">
+      <h2>Sección de Reseñas</h2>
         <ReviewCard
-          review={reviews[currentReview]}
+          review={props.reviews[currentReview]}
           onNext={handleNext}
           onPrev={handlePrev}
         />
+        </div>
         <div className="reseña-form">
-          <div className="form-avatar"></div>
-          <input
-            type="text"
-            placeholder="Nombre de usuario"
-            className="form-input"
-          />
+          <div className="avatar">
+            <img src="/Logoperfilusuarioengranier.png" alt="" />
+            <p>Nombre de usuario</p>
+          </div>
+          Deja tu reseña:
           <textarea
             placeholder="Deja tu reseña:"
             className="form-textarea"
           ></textarea>
           <button className="form-button">Enviar Reseña</button>
         </div>
-      </div>
     </div>
   );
 };
