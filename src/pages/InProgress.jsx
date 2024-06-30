@@ -1,3 +1,7 @@
+
+import React from "react";
+import ChangingFooter from "../components/ChangingFooter";
+import ChangingNavBar from "../components/ChangingNavBar";
 import { Link } from "react-router-dom";
 const InProgress = () => {
   return (

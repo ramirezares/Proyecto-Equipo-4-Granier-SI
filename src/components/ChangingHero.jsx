@@ -16,7 +16,7 @@ const ChangingHero = () => {
   if (isGranierAdminPage) {
     return (
       <div >
-        <img src="/HeroAdminGranier.png" alt="" />
+        <img className="w-full" src="/HeroAdminGranier.png" alt="" />
       </div>
     );
   }
@@ -24,7 +24,7 @@ const ChangingHero = () => {
   if (isGranierPage) {
     return (
       <div className="hero granier-hero">
-        <img src="/HeroUserGranier.png" alt="" />
+        <img className="w-full" src="/HeroUserGranier.png" alt="" />
         <Link className='bordered-blue-background'>
         Conoce más
         </Link>
@@ -35,7 +35,7 @@ const ChangingHero = () => {
   // Default Hero content
   return (
     <div className="hero default-hero">
-      <img src="/HeroLanding.png" alt="" />
+      <img className="w-full" src="/HeroLanding.png" alt="" />
     </div>
   );
 };
