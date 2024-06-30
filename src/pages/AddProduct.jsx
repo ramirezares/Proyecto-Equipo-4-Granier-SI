@@ -94,6 +94,7 @@ const AddProduct = () => {
             ></textarea>
           </div>
 
+          {/*Subir Fotos */}
           <div className="w-full md:w-1/2 px-3 mb-5">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Upload file
