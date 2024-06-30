@@ -18,6 +18,11 @@ export default {
         'blanco-hueso': '#D9D9D6',
 
       },
+      fontFamily: {
+        robotoRegular:['Regular'],
+        robotoMedium:['Medium'],
+        robotoBold:['Bold'],
+      }
     },
   },
   plugins: [],
