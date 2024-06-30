@@ -241,7 +241,7 @@ const ChangingNavBar = () => {
   }
 }; 
 
-
+export default ChangingNavBar;
 /* Navbar offline
 //Estas constantes son para que agarre click cuando la pantalla sea de celular
     const [click, setClick] = useState(false);
