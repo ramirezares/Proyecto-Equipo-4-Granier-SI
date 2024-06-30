@@ -6,7 +6,6 @@ import {
   signOut,
 } from "firebase/auth";
 import {
-  setDoc,
   doc,
   collection,
   addDoc,
@@ -222,7 +221,6 @@ export async function updateUserData(
   const usersCollection = collection(db, "users");
   const ref = await getUserId(email);
   await updateDoc(doc(usersCollection, ref), {
-    id: id,
     firtsName: firtsName,
     lastName: lastName,
     username: username,
