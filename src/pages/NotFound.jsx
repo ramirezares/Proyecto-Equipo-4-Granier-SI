@@ -10,7 +10,7 @@ const NotFound = () => {
       <Link to="/">Volver al inicio</Link>
     <div className="flex justify-center p-10 m-10">
       <img
-              src="../../public/404-Error.png"
+              src="/404-Error.png"
               alt="Gato 404"
               className=" max-w-lg"
           />

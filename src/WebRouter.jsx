@@ -1,17 +1,18 @@
 //import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-import LayoutPublic from "../layout/LayoutPublic.jsx";
+import LayoutPublic from "./layout/LayoutPublic.jsx";
 
-import AboutUs from "../pages/AboutUs.jsx"
-import LandingPage from "../pages/LandingPage.jsx";
-import Register from "../pages/Register.jsx";
-import Login from "../pages/Login.jsx";
-import Granier from "../pages/Granier.jsx";
-import Contact from "../pages/Contact.jsx";
-import HomeEmployee from "../pages/HomeEmployee.jsx";
-import InProgress from "../pages/InProgress.jsx";
-import NotFound from "../pages/NotFound.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
+import Granier from "./pages/Granier.jsx";
+import Contact from "./pages/Contact.jsx";
+import AboutUs from "./pages/AboutUs.jsx"
+import Menu from "./pages/Menu.jsx"
+import HomeEmployee from "./pages/HomeEmployee.jsx";
+import InProgress from "./pages/InProgress.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 //import { AuthProvider } from "./AuthContext.jsx";
 
@@ -57,6 +58,22 @@ export const WebRouter = createBrowserRouter([
         path: "/granier/aboutUs",
         element: <AboutUs />,
       },
+      {
+        /*Menu*/
+        path: "/granier/menu",
+        element: <Menu />,
+      },
+      {
+        /*Carrito     FALTA*/
+        path: "/granier/menu",
+        element: <Menu />,
+      },
+      {
+        /*Perfil      FALTA*/
+        path: "/granier/menu",
+        element: <Menu />,
+      },
+
       {
         /*HomeEmployee*/
         path: "/granier/homeEmployee",
