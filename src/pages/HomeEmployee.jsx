@@ -9,24 +9,24 @@ const HomeEmployee = () => {
         <Hero />
         <div className="container mx-auto pt-8 pb-20 md:pt-12 lg:pt-20">
           <div className="lg:flex items-center justify-between mb-12">
-            <div className="ml-20 flex-col gap-4 flex text-black font-robotoBold items-center">
+            <div className="md:ml-20 flex-col gap-4 flex text-black font-robotoBold items-center">
               <Link spy={true} smooth={true} to="/register">
-                <button className="text-5xl px-40 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-4 rounded-full">
+                <button className="text-3xl md:text-5xl md:px-40 px-20 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-4 rounded-full">
                   Ir al Menú
                 </button>
               </Link>
               <Link spy={true} smooth={true} to="/register">
-                <button className="text-4xl px-4 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
+                <button className="text-xl md:text-4xl md:px-4 px-2 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
                   Agregar producto o promoción
                 </button>
               </Link>
               <Link spy={true} smooth={true} to="/register">
-                <button className="text-4xl px-28 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
+                <button className="text-xl md:text-4xl md:px-28 px-12 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
                   Gestionar pedidos
                 </button>
               </Link>
               <Link spy={true} smooth={true} to="/register">
-                <button className="mb-4 text-4xl px-40 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
+                <button className="mb-4 text-xl md:text-4xl md:px-40 px-16 bg-beige-granier border-white border-4 hover:bg-naranja-unimet py-2 rounded-full">
                   Ver reseñas
                 </button>
               </Link>
