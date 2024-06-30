@@ -16,7 +16,7 @@ const ChangingHero = () => {
   if (isGranierAdminPage) {
     return (
       <div >
-        <img src="/HeroAdminGranier.png" alt="" />
+        <img className="w-full" src="/HeroAdminGranier.png" alt="" />
       </div>
     );
   }
