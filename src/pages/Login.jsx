@@ -4,7 +4,7 @@ import {
   loginWithCredentials,
   signInGoogle,
   signInFacebook,
-} from "../controllers/Auth";
+} from "../controllers/auth";
 import { usePassword } from "../hooks/password";
 import { useRequired } from "../hooks/requiered";
 import { useUser } from "../hooks/useUser"; // Ajusta la ruta si es necesario
