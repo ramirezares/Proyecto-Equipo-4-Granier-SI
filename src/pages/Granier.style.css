@@ -1,0 +1,27 @@
+.our-contacts{
+    display: flex;
+    background-color: #AC976D;
+    color: #ffffff;
+    
+}
+.bordered-blue-background {
+    padding: 10px 30px;
+    background-color: #003087;
+    color: white;
+    border: #ffffff solid;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+  }
+  
+  .bordered-brown-background {
+    padding: 10px 30px;
+    background-color: #AC976D;
+    color: black;
+    border: #ffffff solid;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+  }

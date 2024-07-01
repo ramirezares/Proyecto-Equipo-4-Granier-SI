@@ -1,0 +1,48 @@
+.review-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    position: relative;
+    margin: 10px;
+  }
+  
+  .review-avatar {
+    
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .review-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .review-text {
+    text-align: left;
+  }
+  
+  .review-text p {
+    margin: 5px 0;
+  }
+  
+  .review-arrow {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .review-arrow.left {
+    margin-right: 10px;
+  }
+  
+  .review-arrow.right {
+    margin-left: 10px;
+  }
+  

@@ -1,0 +1,10 @@
+.promos{
+  background-color: #34394B;
+  color: #ffffff;
+}
+
+.promotions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

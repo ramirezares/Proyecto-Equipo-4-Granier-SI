@@ -1,0 +1,65 @@
+/*
+.offline{
+    background-color: #D9D9D6 ;
+}
+
+.loged{
+    background-color: #D9D9D6 ;
+    display: flex;
+}
+
+.granier{
+    background-color: #34394B ;
+}
+
+.employee{
+    background-color: #34394B ;
+    display: flex;
+}
+
+
+
+.bordered-blue-background {
+    padding: 10px 30px;
+    background-color:  #003087;
+    color: white;
+    border: #003087 solid;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+  }
+
+  .bordered-blue-background:hover {
+    background-color: #34394B;
+  }
+
+  .borderless {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 10px 30px;
+    text-decoration: none;
+  }
+
+  .borderless:hover {
+    color: gray;
+  }
+
+  .btnProfile {
+    display: flex;
+    background-color: #003087;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1em;
+    padding: 10px 30px;
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+  }
+  
+  */
