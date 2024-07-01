@@ -4,6 +4,14 @@ import { Link } from "react-router-dom";
 import "./MenuCard.style.css";
 
 const MenuCard = ({ product, onAddToCart }) => {
+
+  const pathname = window.location.pathname;
+  let url = `/granier/menu/product/${product.name}`
+
+  if (pathname.includes("homeEmployee")) {
+    url = `/granier/menu/product/${product.name}`;
+  }
+
   return (
     <div className="product-card">
       <img src={product.images} alt={product.name} className="product-image" />
@@ -12,7 +20,7 @@ const MenuCard = ({ product, onAddToCart }) => {
           <h3> {product.name}</h3>
         </div>
         <div className="button-contanier">
-          <Link to={`/producto/${product.name}`} className="info-button">
+          <Link to={url} className="info-button">
             Información
           </Link>
           <button

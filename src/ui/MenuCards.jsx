@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MenuCard from "../components/MenuCard.jsx";
 import "./styles/MenuCards.style.css";
 
-const MenuCards = ({ products, onAddToCart }) => {
+const MenuCards = ({ products , onAddToCart }) => {
   return (
     <>
       {products.length > 0 ? (

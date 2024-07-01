@@ -1,10 +1,11 @@
+import Hero from "../ui/Hero";
 
 
 const AboutUs = () => {
   return (
     <>
     <div className="container mx-auto p-20 m-20">
-
+      <Hero/>
       <div className="flex justify-center mt-10 p-10">
         <div className="image w-1/2 mr-4">
           <img

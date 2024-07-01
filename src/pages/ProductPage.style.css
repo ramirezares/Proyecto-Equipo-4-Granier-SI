@@ -1,0 +1,20 @@
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info{
+    min-width: 30%;
+    margin: 10px;
+}
+
+.l1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.l2{
+    display: flex;
+    justify-content: space-between;
+}

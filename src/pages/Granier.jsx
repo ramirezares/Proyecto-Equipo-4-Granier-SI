@@ -37,7 +37,7 @@ const Granier = () => {
         <Reviews reviews={reviews}/>
         <div className="our-contacts">
           <p>¿Deseas comunicarte con nosotros?</p>
-          <Link className='bordered-blue-background'>
+          <Link to="/granier/contact" className='bordered-blue-background'>
           Información de contacto
           </Link>
           <Link className='bordered-blue-background'>

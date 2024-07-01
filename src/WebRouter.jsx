@@ -10,6 +10,8 @@ import Granier from "./pages/Granier.jsx";
 import Contact from "./pages/Contact.jsx";
 import AboutUs from "./pages/AboutUs.jsx"
 import Menu from "./pages/Menu.jsx"
+import ProductPage from "./pages/ProductPage.jsx";
+import ShoppingCart from "./pages/ShoppingCart.jsx"
 import HomeEmployee from "./pages/HomeEmployee.jsx";
 import InProgress from "./pages/InProgress.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -64,9 +66,14 @@ export const WebRouter = createBrowserRouter([
         element: <Menu />,
       },
       {
-        /*Carrito     FALTA*/
-        path: "/granier/menu",
-        element: <Menu />,
+        /*Product*/
+        path: "/granier/menu/product/:productName",
+        element: <ProductPage />,
+      },
+      {
+        /*Carrito*/
+        path: "/granier/carrito",
+        element: <ShoppingCart />,
       },
       {
         /*Perfil      FALTA*/
