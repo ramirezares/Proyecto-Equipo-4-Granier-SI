@@ -13,7 +13,7 @@ function Orders() {
     ];
 
     return (
-        <div className="max-w-a mx-auto m-10 p-4 bg-white rounded shadow-md border border-gray-300">
+        <div className="max-w-6xl mx-auto m-10 p-4 bg-white rounded shadow-md border border-gray-300">
         <h1 className="text-3xl font-bold mb-4">Pedidos Pendientes</h1>
         <hr className="h-px mb-5 bg-gray-300 border-0" />
 

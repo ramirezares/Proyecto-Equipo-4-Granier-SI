@@ -7,10 +7,10 @@ const Comment = ({ comment }) => {
             <img
                 src={comment.photo}
                 alt={comment.username}
-                className="w-12 h-12 rounded-full mx-auto"
+                className="w-12 h-12 m-5 rounded-full mx-auto"
             /></div>
             <div className="w-3/4 ">
-                <h5 className="text-lg font-bold">{comment.username}</h5>
+                <h5 className="text-lg font-bold mt-3">{comment.username}</h5>
                 <p className="text-gray-600">{comment.text}</p>
             </div>
         </div>
