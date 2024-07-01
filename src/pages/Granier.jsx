@@ -40,7 +40,7 @@ const Granier = () => {
           <Link to="/granier/contact" className='bordered-blue-background'>
           Información de contacto
           </Link>
-          <Link className='bordered-blue-background'>
+          <Link to="/granier/sugestions" className='bordered-blue-background'>
           Sugerencias y reclamos
           </Link>
         </div>
