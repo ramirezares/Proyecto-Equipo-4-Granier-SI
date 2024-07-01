@@ -1,5 +1,4 @@
-import React from "react";
-import ButtomImg from "../components/ButtonImg";
+
 import Hero from "../ui/Hero";
 
 const LandingPage = () => {
@@ -8,17 +7,14 @@ const LandingPage = () => {
     <>
       <div>
         <Hero />
-        <div>
-          <ButtomImg
-            link="/granier"
-            backgroundImage1="/Graniersoloblanco.png"
-            backgroundImage2="/Bakeryproducts.png"
-          />
-          <ButtomImg
-            link="/inprogress"
-            backgroundImage1="/Kioskobelievelogo.jpg"
-            backgroundImage2="/kioskobelieveunimet.jpg"
-          />
+        <div className="flex flex-col items-center m-4">
+          <p className="text-6xl font-bold text-black p-20">¿Qué deseas para hoy?</p>
+          <a href="/Granier" className="mb-4">
+            <img className="rounded-lg w-85 h-a" src="/Granier-Photo-Button.png" alt="Foto Granier" />
+          </a>
+          <a href="/inprogress">
+            <img className="rounded-lg w-85 h-a" src="/Kiosko-Photo-Button.png" alt="Foto Kiosko Belive" />
+          </a>
         </div>
       </div>
     </>
