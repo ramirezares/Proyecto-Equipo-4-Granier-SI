@@ -8,8 +8,9 @@ const MenuCard = ({ product, onAddToCart }) => {
   const pathname = window.location.pathname;
   let url = `/granier/menu/product/${product.name}`
 
-  if (pathname.includes("homeEmployee")) {
-    url = `/granier/menu/product/${product.name}`;
+  if (pathname.includes("employee")) {
+    console.log(pathname.includes("employee"))
+    url = `/granier/employee/menu/product/${product.name}`;
   }
 
   return (

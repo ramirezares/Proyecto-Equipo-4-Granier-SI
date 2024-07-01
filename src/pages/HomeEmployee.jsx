@@ -10,22 +10,22 @@ const HomeEmployee = () => {
         <div className="container mx-auto pt-8 pb-20 md:pt-12 lg:pt-20">
           <div className="lg:flex items-center justify-between mb-12">
             <div className="md:ml-20 flex-col gap-10 flex text-black font-robotoBold items-center">
-              <Link spy={true} smooth={true} to="/register">
+              <Link spy={true} smooth={true} to="/granier/employee/menu">
                 <button className="text-3xl md:text-5xl md:px-40 px-20 bg-beige-granier border-white border-8 hover:bg-white py-6 rounded-full">
                   Ir al Menú
                 </button>
               </Link>
-              <Link spy={true} smooth={true} to="/register">
+              <Link spy={true} smooth={true} to="/granier/employee/add-product">
                 <button className="text-xl md:text-3xl md:px-12 px-2 bg-beige-granier border-white border-8 hover:bg-white py-4 rounded-full">
                   Agregar producto o promoción
                 </button>
               </Link>
-              <Link spy={true} smooth={true} to="/register">
+              <Link spy={true} smooth={true} to="/granier/employee/orders">
                 <button className="text-xl md:text-3xl md:px-32 px-12 bg-beige-granier border-white border-8 hover:bg-white py-4 rounded-full">
                   Gestionar pedidos
                 </button>
               </Link>
-              <Link spy={true} smooth={true} to="/register">
+              <Link spy={true} smooth={true} to="/granier/employee/reviews">
                 <button className="mb-4 text-xl md:text-3xl md:px-44 px-16 bg-beige-granier border-white border-8 hover:bg-white py-4 rounded-full">
                   Ver reseñas
                 </button>
