@@ -6,9 +6,26 @@ const NotFound = () => {
 
   return (
     <>
-    <p>{error.statusText || error.message}</p>
-      <Link to="/">Volver al inicio</Link>
-    <div className="flex justify-center p-10 m-10">
+    <div className="flex justify-center m-10">
+      <div className="flex-1">
+        <Link
+          to="/"
+          className="text-3xl font-bold text-[#263238] border p-3 border-orange-500 border-4 rounded bg-[#FFDAB3]"
+        >
+          Volver al inicio
+        </Link>
+      </div>
+      <div className="flex-2">
+          <p className="text-3xl font-bold text-orange-500">
+            {error.statusText || error.message}
+          </p>
+      </div>
+
+      
+    </div>  
+    
+    <div className="flex justify-center m-5">
+      
       <img
               src="../../public/404-Error.png"
               alt="Gato 404"
