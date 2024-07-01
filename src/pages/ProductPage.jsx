@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import ImageGallery from "../components/ImageGallery.jsx";
 import "./ProductPage.style.css";
