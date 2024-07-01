@@ -31,8 +31,9 @@ const NotFound = () => {
               alt="Gato 404"
               className=" max-w-lg"
           />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
