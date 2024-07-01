@@ -13,25 +13,25 @@ const MenuCard = ({ product, onAddToCart }) => {
   }
 
   return (
-    <div className="product-card">
-      <img src={product.images} alt={product.name} className="product-image" />
-      <div className="product-info">
+    <div className="product-card bg-white rounded-lg p-2.5 w-full max-w-60 text-white font-bold shadow-xl">
+      <img src={product.images} alt={product.name} className="product-image text-black" />
+      <div className="flex-col justify-between mt-2.5 bg-beige-granier rounded-lg">
         <div>
-          <h3> {product.name}</h3>
+          <h3 className="pl-4 pt-2 pb-3"> {product.name}</h3>
         </div>
-        <div className="button-contanier">
-          <Link to={url} className="info-button">
+        <div className="button-contanier pl-2 pb-2 flex ">
+          <Link to={url} className="info-button bg-azul-oscuro-granier p-1 rounded-lg w-fit hover:bg-beige-granier">
             Información
           </Link>
           <button
-            className="add-button"
+            className="add-button bg-azul-oscuro-granier  p-1 ml-2 rounded-lg w-fit hover:bg-beige-granier"
             onClick={() => {
               onAddToCart(product);
             }}
           >
             +
           </button>
-          <p className="product-price">${product.price}</p>
+          <p className="ml-9 mt-1">${product.price}</p>
         </div>
       </div>
     </div>
