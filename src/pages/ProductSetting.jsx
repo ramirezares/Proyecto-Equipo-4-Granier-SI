@@ -21,7 +21,7 @@ const ProductSetting = () => {
 
 return (
     <>
-    <div className="max-w-3xl mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md">
+    <div className="border-2 border-gray-200 max-w-3xl mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md">
         <h2 className="text-2xl font-bold mb-4">
         Configuración de Producto/Promoción
         </h2>

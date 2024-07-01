@@ -22,7 +22,7 @@ const CompleteRegister = () => {
 
         {/*Div de Formulario */}
         <form onSubmit={null} className="w-1/2 flex justify-center">
-          <div className="flex flex-col items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg">
+          <div className="border-2 border-gray-200 flex flex-col items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg">
             <div>
               <h2 className="text-2xl font-semibold mt-5 mb-10">Paso Final de Registro</h2>
             </div>
