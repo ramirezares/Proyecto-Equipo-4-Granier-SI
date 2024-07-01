@@ -32,8 +32,7 @@ const NotFound = () => {
               className=" max-w-lg"
           />
         </div>
-      </div>
-    </div>
+    </>
   );
 };
 
