@@ -18,33 +18,45 @@ import {
 import { auth, googleProvider, facebookProvider } from "../firebase";
 import { db } from "../firebase";
 
+async function addUserToFirestore(user, additionalData = {}) {
+  const number = user.phoneNumber || "04120000000";
+  await addDoc(collection(db, "users"), {
+    id: user.uid,
+    firstName: user.displayName || "",
+    lastName: "",
+    email: user.email,
+    userRole: "1",
+    number: number,
+    username: "",
+    image: "",
+    career: "",
+    occupation: "",
+    foodPreference: [],
+    purchases: [],
+    ...additionalData,
+  });
+}
+
 export async function signUpGoogle() {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-
-    const adittionalInfo = getAdditionalUserInfo(result);
-
-    if (adittionalInfo.isNewUser == true) {
-      let number = result.user.phoneNumber;
-      if (number == null) {
-        number = "04120000000";
-      }
-      await addDoc(collection(db, "users"), {
-        id: result.user.uid,
-        firtsName: result.user.displayName,
-        lastName: "",
-        email: result.user.email,
-        userRole: "1",
-        number: number,
-        username: "",
-        image: "",
-        carrer: "",
-        ocupation: "",
-        foodPreference: [],
-        purcharses: [],
-      });
+    const additionalInfo = getAdditionalUserInfo(result);
+    if (additionalInfo.isNewUser) {
+      await addUserToFirestore(result.user);
     }
+    return result.user;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
+export async function signUpFacebook() {
+  try {
+    const result = await signInWithPopup(auth, facebookProvider);
+    const additionalInfo = getAdditionalUserInfo(result);
+    if (additionalInfo.isNewUser) {
+      await addUserToFirestore(result.user);
+    }
     return result.user;
   } catch (error) {
     console.error(error);
@@ -54,29 +66,6 @@ export async function signUpGoogle() {
 export async function signInGoogle() {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-
-    const adittionalInfo = getAdditionalUserInfo(result);
-
-    if (adittionalInfo.isNewUser) {
-      let number = result.user.phoneNumber;
-      if (number == null) {
-        number = "04120000000";
-      }
-      await addDoc(collection(db, "users"), {
-        id: result.user.uid,
-        firtsName: result.user.displayName,
-        lastName: "",
-        email: result.user.email,
-        userRole: "1",
-        number: number,
-        username: "",
-        image: "",
-        carrer: "",
-        ocupation: "",
-        foodPreference: [],
-        purcharses: [],
-      });
-    }
     return result.user;
   } catch (error) {
     console.error(error);
@@ -86,29 +75,6 @@ export async function signInGoogle() {
 export async function signInFacebook() {
   try {
     const result = await signInWithPopup(auth, facebookProvider);
-
-    const adittionalInfo = getAdditionalUserInfo(result);
-
-    if (adittionalInfo.isNewUser) {
-      let number = result.user.phoneNumber;
-      if (number == null) {
-        number = "04120000000";
-      }
-      await addDoc(collection(db, "users"), {
-        id: result.user.uid,
-        firtsName: result.user.displayName,
-        lastName: "",
-        email: result.user.email,
-        userRole: "1",
-        number: number,
-        username: "",
-        image: "",
-        carrer: "",
-        ocupation: "",
-        foodPreference: [],
-        purcharses: [],
-      });
-    }
     return result.user;
   } catch (error) {
     console.error(error);
@@ -118,7 +84,6 @@ export async function signInFacebook() {
 export async function logOut() {
   try {
     await signOut(auth);
-    // Al usar esta funcion setear al usuario a NULL
   } catch (error) {
     console.error(error);
   }
@@ -135,15 +100,15 @@ export async function loginWithCredentials(email, password) {
 }
 
 export async function registerWithCredentials(
-  firtsName,
+  firstName,
   lastName,
   username,
   email,
   password,
   number,
-  carrer,
-  ocupation,
-  purcharses,
+  career,
+  occupation,
+  purchases,
   foodPreference
 ) {
   try {
@@ -152,7 +117,16 @@ export async function registerWithCredentials(
       email,
       password
     );
-    await createUserData(user.uid, firtsName, lastName, username, email, number, carrer, ocupation,purcharses, foodPreference);
+    await addUserToFirestore(user, {
+      firstName,
+      lastName,
+      username,
+      number,
+      career,
+      occupation,
+      purchases,
+      foodPreference,
+    });
     return user;
   } catch (error) {
     console.error(error);
@@ -160,76 +134,55 @@ export async function registerWithCredentials(
   }
 }
 
-export async function createUserData(id, firtsName, lastName, username, email, number, carrer, ocupation,purcharses, foodPreference) {
-  await addDoc(collection(db, "users"), {
-    id: id,
-    firtsName: firtsName,
-    lastName: lastName,
-    username: username,
-    email: email,
-    userRole: "1",
-    number: number,
-    image: "",
-    carrer: carrer,
-    ocupation: ocupation,
-    foodPreference: foodPreference,
-    purcharses: purcharses,
-  });
-}
-
 export async function getUserData(email) {
-  const usersCollection = collection(db, "users");
-  const userQuery = query(usersCollection, where("email", "==", email));
+  const userQuery = query(collection(db, "users"), where("email", "==", email));
   const userSnapshot = await getDocs(userQuery);
-  const users = userSnapshot.docs.map((doc) => doc.data());
-  return users[0];
+  return userSnapshot.docs[0]?.data();
 }
 
 export async function getUserId(email) {
-  const usersCollection = collection(db, "users");
-  const userQuery = query(usersCollection, where("email", "==", email));
+  const userQuery = query(collection(db, "users"), where("email", "==", email));
   const userSnapshot = await getDocs(userQuery);
-  return userSnapshot.docs[0].ref.path.split("/")[1];
+  return userSnapshot.docs[0]?.id;
 }
 
 export async function getUserById(id) {
   const userRef = doc(db, "users", id);
   const userSnapshot = await getDoc(userRef);
-
   return userSnapshot.data();
 }
 
 export async function getUserIdByUser(id) {
-  const usersCollection = collection(db, "users");
-  const userQuery = query(usersCollection, where("id", "==", id));
+  const userQuery = query(collection(db, "users"), where("id", "==", id));
   const userSnapshot = await getDocs(userQuery);
-  return userSnapshot.docs[0].ref.path.split("/")[1];
+  return userSnapshot.docs[0]?.id;
 }
 
 export async function updateUserData(
-    firtsName,
-    lastName,
-    username,
-    email,
-    img,
-    number,
-    carrer,
-    ocupation,
-    purcharses,
-    foodPreference,
+  firstName,
+  lastName,
+  username,
+  email,
+  img,
+  number,
+  career,
+  occupation,
+  purchases,
+  foodPreference
 ) {
-  const usersCollection = collection(db, "users");
-  const ref = await getUserId(email);
-  await updateDoc(doc(usersCollection, ref), {
-    firtsName: firtsName,
-    lastName: lastName,
-    username: username,
-    email: email,
-    number: number,
-    image: img,
-    carrer: carrer,
-    ocupation: ocupation,
-    foodPreference: foodPreference,
-    purcharses: purcharses,
-  });
+  const userId = await getUserId(email);
+  if (userId) {
+    await updateDoc(doc(db, "users", userId), {
+      firstName,
+      lastName,
+      username,
+      email,
+      number,
+      image: img,
+      career,
+      occupation,
+      foodPreference,
+      purchases,
+    });
+  }
 }
