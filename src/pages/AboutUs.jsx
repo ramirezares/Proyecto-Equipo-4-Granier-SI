@@ -1,14 +1,15 @@
+import Hero from "../ui/Hero";
 
 
 const AboutUs = () => {
   return (
     <>
     <div className="container mx-auto p-20 m-20">
-
+      <Hero/>
       <div className="flex justify-center mt-10 p-10">
         <div className="image w-1/2 mr-4">
           <img
-              src="../../public/panadero-trabajando.png"
+              src="/panadero-trabajando.png"
               alt="Panadero trabajando"
               className="rounded-lg"
           />
@@ -46,7 +47,7 @@ const AboutUs = () => {
 
         <div className="bg-auto rounded-lg p-6">
           <img
-            src="../../public/mapa-del-mundo.png"
+            src="/mapa-del-mundo.png"
             alt="Mapa del mundo"
             className="rounded-lg"
           />
@@ -54,7 +55,7 @@ const AboutUs = () => {
 
         <div className="bg-auto rounded-lg p-6">
           <img
-            src="../../public/barco-navegando.png"
+            src="/barco-navegando.png"
             alt="Barco navegando"
             className="rounded-lg"
           />
@@ -63,7 +64,7 @@ const AboutUs = () => {
         <div className="bg-auto rounded-lg p-6">
 
           <img
-            src="../../public/mapa-del-mundo2.png"
+            src="/mapa-del-mundo2.png"
             alt="Mapa con pin"
             className="rounded-lg"
           />

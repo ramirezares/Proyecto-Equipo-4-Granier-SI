@@ -27,7 +27,7 @@ const NotFound = () => {
     <div className="flex justify-center m-5">
       
       <img
-              src="../../public/404-Error.png"
+              src="/404-Error.png"
               alt="Gato 404"
               className=" max-w-lg"
           />
