@@ -12,7 +12,7 @@ const ChangingFooter = () => {
   if (isGranierPage) {
     return (
       <footer className="text-white ">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-naranja-unimet py-7">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-naranja-unimet py-6">
         <h1
           className=" mx-auto lg:text-1xl  md:mb-0 mb-6 lg:leading-normal font-semibold
          md:w-2/5"
@@ -20,8 +20,8 @@ const ChangingFooter = () => {
           <p>© GRANIER VENEZUELA | Derechos reservados</p>
           <p>
             Página Principal de la Universidad Metropolitana:{" "}
-            <a className="noDecoration" href="https://www.unimet.edu.ve/">https://www.unimet.edu.ve/</a>
           </p>
+          <a className="noDecoration" href="https://www.unimet.edu.ve/">https://www.unimet.edu.ve/</a>
         </h1>
         <div>
           <Link to="/">
@@ -52,8 +52,9 @@ const ChangingFooter = () => {
         >
           <p>
             Página Principal de la Universidad Metropolitana:{" "}
-            <a className="noDecoration" href="https://www.unimet.edu.ve/">https://www.unimet.edu.ve/</a>
+            
           </p>
+          <a className="noDecoration" href="https://www.unimet.edu.ve/">https://www.unimet.edu.ve/</a>
         </h1>
         <div>
           <Link to="/">

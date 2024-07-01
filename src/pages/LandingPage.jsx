@@ -8,7 +8,7 @@ const LandingPage = () => {
     <>
       <div>
         <Hero />
-        <div>
+        <div className="lg:ml-96">
           <ButtomImg
             link="/granier"
             backgroundImage1="/Graniersoloblanco.png"
