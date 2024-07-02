@@ -112,7 +112,7 @@ export const WebRouter = createBrowserRouter([
       },
       {
         /*Agradecimiento*/   //TODO:Componente Page Daniela 
-        path: "/granier/successful",
+        path: "/granier/shoppingcart/successful",
         element: <Greetings />,
       },
       {

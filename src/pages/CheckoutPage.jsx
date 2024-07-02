@@ -6,7 +6,7 @@ function CheckoutPage() {
 
         <div className=" max-w-lg w-1/2 mr-20 container mx-auto">
           <div className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg" id="input">
-            <label className="block mb-2 text-lg font-medium text-gray-900">
+            <label className="block mb-2 text-lg font-bold text-gray-900">
                     Detalles de la Orden
                   </label>
             <form>
@@ -59,7 +59,8 @@ function CheckoutPage() {
         
         <div className=" max-w-lg w-1/2 ml-20 container mx-auto">
           <div className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg" id="input">
-            <h2 className="text-lg font-bold mb-4">Resumen de Pedido</h2>
+            <h2 className="block mb-2 text-lg font-bold text-gray-900">Resumen de Pedido</h2>
+            
 
             <ul className="list-none mb-4">
                 <div className="mt-6 grow sm:mt-8 lg:mt-0">
