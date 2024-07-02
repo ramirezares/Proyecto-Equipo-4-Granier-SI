@@ -75,6 +75,7 @@ const Register = () => {
   return (
     <>
       <div className="mx-auto mb-10">
+
         <div className="flex flex-wrap">
           {/*Imagen */}
           <div className=" w-full ">
@@ -90,10 +91,7 @@ const Register = () => {
         <div className="flex flex-wrap">
           {/*Registro Correo */}
           <div className="max-w-xl w-2/3 container mx-auto">
-            <div
-              className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg"
-              id="input"
-            >
+            <div className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg" id="input">
               <h4 className="text-2xl font-bold mb-4">
                 Regístrate en UNIMET MetroEats
               </h4>
@@ -316,6 +314,7 @@ const Register = () => {
               id="input"
             >
               <h4 className="text-2xl font-bold mb-4">Regístrate rápido con</h4>
+              <hr className="h-px mb-5 bg-gray-300 border-0" />
 
               <div className="mb-3">
                 <div className="flex flex-wrap">
@@ -345,6 +344,7 @@ const Register = () => {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );
