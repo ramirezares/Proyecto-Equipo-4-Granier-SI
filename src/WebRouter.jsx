@@ -36,7 +36,7 @@ export const WebRouter = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       
-      /* Offile */
+      /* Offline */
       {
         /*Landing page */
         index: true,
