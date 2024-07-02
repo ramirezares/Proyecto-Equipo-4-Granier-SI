@@ -10,7 +10,23 @@ import { useState } from "react";
 
 const CompleteRegister = () => {
   const [phone, setPhone] = useState("");
-  console.log(phone)
+  const [occupation, setOccupation] = useState("");
+  const [departmentOrCareer, setDepartmentOrCareer] = useState("");
+  const [foodPreferences, setFoodPreferences] = useState([]);
+
+  const handleFoodPreferenceChange = (preference) => {
+    setFoodPreferences((prevPreferences) =>
+      prevPreferences.includes(preference)
+        ? prevPreferences.filter((p) => p !== preference)
+        : [...prevPreferences, preference]
+    );
+  };
+
+
+
+
+
+  console.log(phone,  departmentOrCareer,foodPreferences)
 
   return (
     <div className="container mx-auto">
@@ -51,68 +67,110 @@ const CompleteRegister = () => {
 
 
 
-            <label htmlFor="occupation" className="font-bold  block mb-5 text-gray-700">
+            <label htmlFor="occupation" className="font-bold  block mb-2 text-gray-700">
             Ocupación en la Universidad Metropolitana</label>
 
-              {/*Dropdowns Ocupacion y Departamento */}
-            <div className="flex flex-col gap-4">
-                {/*Ocupacion */}
-                <div className="">
-                  <select id="occupation" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
-                    <option value="">Seleccionar</option>
-                    <option value="student">Estudiante</option>
-                    <option value="teacher">Docente</option>
-                    <option value="staff">Personal Administrativo</option>
-                  </select>
+              {/*Ocupacion*/}
+              <div className="mb-3">
+                    <select
+                      className="bg-gray-50 border m-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      onChange={(e) => setOccupation(e.target.value)}
+                      required
+                    >
+                      <option value="">Selecciona tu ocupación</option>
+                      <option value="administrativo">Administrativo</option>
+                      <option value="profesor">Profesor</option>
+                      <option value="estudiante">Estudiante</option>
+                    </select>
+
+                
+
+                {/* Departamento o Carrera */}
+                {occupation === "profesor" && (
+                  <div className="mb-3">
+                    <select
+                      className="bg-gray-50 border m-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      onChange={(e) => setDepartmentOrCareer(e.target.value)}
+                      required
+                    >
+                      <option value="">Selecciona tu departamento</option>
+                      <option value="Depto. Matemáticas">
+                        Depto. Matemáticas
+                      </option>
+                      <option value="Depto. Química">Depto. Química</option>
+                      <option value="Depto. Física">Depto. Física</option>
+                    </select>
+                  </div>
+                )}
+                {occupation === "estudiante" && (
+                  <div className="mb-3">
+                    <select
+                      className="bg-gray-50 border m-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                      onChange={(e) => setDepartmentOrCareer(e.target.value)}
+                      required
+                    >
+                      <option value="">Selecciona tu carrera</option>
+                      <option value="Ing. Sistemas">Ing. Sistemas</option>
+                      <option value="Administración">Administración</option>
+                      <option value="Ing. Mecánica">Ing. Mecánica</option>
+                    </select>
+                  </div>
+                )}
                 </div>
-                {/*Departamento */}
-                <div className="">
-                  <select id="department" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300">
-                    <option value="">Seleccionar</option>
-                    <option value="student">Ing. de Sistemas</option>
-                    <option value="teacher">Ing. Química</option>
-                    <option value="staff">Matemáticas Industriales</option>
-                  </select>
-                </div>
+
+                
+            {/* Preferencias alimentarias */}
+            <div className="mb-3">
+
+            <div className="mt-5">
+              <p className="block mb-2 text-lg font-medium text-gray-900">Preferencias alimentarias</p>
             </div>
 
-            {/*Preferencias Alimentarias CheckBox */}
-            <div className="mt-6">
+            <div className="flex flex-wrap gap-4">
 
-              <label className="block mb-2 text-gray-700 text-center font-bold">Preferencias alimentarias</label>
+              <div className="flex items-center">
+                <input
+                  className="mr-2"
+                  type="checkbox"
+                  id="veganCheck"
+                  onChange={() => handleFoodPreferenceChange("Veganismo")}
+                />
+                <label className="text-gray-700">Veganismo</label>
+              </div>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex items-center">
+                <input
+                  className="mr-2"
+                  type="checkbox"
+                  id="vegetarianCheck"
+                  onChange={() =>
+                    handleFoodPreferenceChange("Vegetarianismo")
+                  }
+                />
+                <label className="text-gray-700">Vegetarianismo</label>
+              </div>
 
-                {/*Checkbox Veganismo */}
-                <div className="flex items-center">
-                  <input type="checkbox" id="veganism" className="mr-2" />
-                  <label htmlFor="veganism" className="text-gray-700">
-                    Veganismo
-                  </label>
-                </div>
-
-                {/*Checkbox Vegetariano */}
-                <div className="flex items-center mt-2">
-                  <input type="checkbox" id="vegetarianism" className="mr-2" />
-                  <label htmlFor="vegetarianism" className="text-gray-700">
-                    Vegetarianismo
-                  </label>
-                </div>
-
-                {/*Checkbox Gluten Free */}
-                <div className="flex items-center mt-2">
-                  <input type="checkbox" id="glutenFree" className="mr-2" />
-                  <label htmlFor="glutenFree" className="text-gray-700">
-                    Gluten Free
-                  </label>
-                </div>
-
+              <div className="flex items-center">
+                <input
+                  className="mr-2"
+                  type="checkbox"
+                  id="glutenFreeCheck"
+                  onChange={() =>
+                    handleFoodPreferenceChange("Libre de Gluten")
+                  }
+                />
+                <label className="text-gray-700">
+                  Libre de Gluten
+                </label>
               </div>
 
             </div>
 
+            </div>
+
+
             {/*Boton terminar Registro */}
-            <button onClick={SubmitEvent} className="mt-6 w-full px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+            <button onClick={SubmitEvent} className="mx-auto mt-6 w-full px-4 py-2 bg-[#003087] text-white font-bold rounded-md hover:bg-[#001D53] focus:outline-none focus:ring focus:ring-blue-300">
               Crear nueva Cuenta
             </button>
 
@@ -124,63 +182,3 @@ const CompleteRegister = () => {
   );
 };
 export default CompleteRegister;
-
-/*
-<div className="mb-3">
-            <div className="input-group has-validation">
-              <span className="input-group-text" id="inputGroupPrepend">
-                +58
-              </span>
-              <input
-                placeholder="Teléfono"
-                type="tel"
-                className="form-control"
-                id="phone"
-                aria-label="Teléfono"
-                onChange={(e) => setPhone(e.target.value)}
-                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-                required
-              />
-            </div>
-
-            preferencias alimentarias
-            <div className="mb-3">
-                    <div className="p">
-                      <p>Preferencias alimentarias</p>
-                    </div>
-
-                    <div className="input-group mb-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="veganCheck"
-                        />
-                        <label className="form-check-label">Veganismo</label>
-                      </div>
-
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="vegetarianCheck"
-                        />
-                        <label className="form-check-label">
-                          Vegetarianismo
-                        </label>
-                      </div>
-
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="glutenFreeCheck"
-                        />
-                        <label className="form-check-label">
-                          Libre de Gluten
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-      </div>
-*/
