@@ -83,21 +83,21 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="product">
-      <div className="image-container">
+    <div className="product flex flex-col md:flex-row justify-center items-center">
+      <div className="image-container md:w-1/2 mb-4 md:mb-0">
         <ImageGallery images={product.images} />
       </div>
-      <div className="info">
-        <div className="l1">
-          <h1>{product.name}</h1>
-          <p className="value">${product.price}</p>
+      <div className="info md:w-1/2 m-2.5">
+        <div className="l1 flex justify-between mb-6">
+          <h1 className="text-2xl font-bold">{product.name}</h1>
+          <p className="value font-bold text-beige-granier">${product.price}</p>
         </div>
-        <div className="l2">
+        <div className="l2 flex justify-between mb-6">
           <div>
-            <p>Estado: {product.status}</p>
+            <p className="font-bold mr-4">Estado: {product.status}</p>
           </div>
           <div>
-            <p>
+            <p className="font-bold">
               Cantidad:
               <input
                 type="number"
@@ -110,10 +110,10 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="details">
-          <p className="label">Descripción:</p>
-          <p className="description">{product.description}</p>
-          <div>
-            <button>Agregar al carrito</button>
+          <p className="label font-bold">Descripción:</p>
+          <p className="description border-2 pb-20 rounded-lg">{product.description}</p>
+          <div className="justify-center flex mt-20 mb-20">
+            <button className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-beige-granier hover:bg-beige-granier"> + Agregar al carrito</button>
           </div>
         </div>
       </div>
