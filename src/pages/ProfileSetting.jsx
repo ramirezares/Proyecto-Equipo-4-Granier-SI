@@ -32,7 +32,7 @@ const handleSubmit = (e) => {
 };
 
 return (
-    <div className="container border-2 border-gray-200 max-w-3xl mx-auto my-20 bg-white rounded-lg shadow-md p-6">
+    <div className="border-2  border-gray-200 max-w-3xl mx-4 sm:mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md">
         <h2 className="text-2xl font-bold mb-4">
             Configuración del Perfil
         </h2>
@@ -102,7 +102,7 @@ return (
                 Preferencias alimentarias
                 </label>
 
-            <div className="flex flex-wrap mx-3">
+            <div className="flex-col sm:flex mx-3">
                 {/*Checkbox Opcion 1 */}
                 <div className="form-checkbox h-5 w-5 md:w-1/3 px-3 mb-5">
                     <input
@@ -144,7 +144,7 @@ return (
 
             <button
             type="submit"
-            className="bg-[#FF8200] hover:bg-[#E97700] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-[#FF8200] hover:bg-[#E97700] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-20 sm:mt-2"
             >
             Guardar Cambios
             </button>
