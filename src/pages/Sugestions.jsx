@@ -2,8 +2,9 @@ const Sugestions = () => {
 
     return (
 
-        <div className="container border-2 border-gray-200 bg-white rounded-md shadow-md p-4 max-w-2xl mx-auto mt-10" >
+        <div className="container border-2 border-gray-200 bg-white rounded-md shadow-md p-4 max-w-2xl mx-auto m-10" >
             <h1 style={{ color: '#34394B' }} className="text-3xl font-black mb-4 ">Sugerencias y Reclamos</h1>
+            <hr className="h-px mb-5 bg-gray-300 border-0" />
             <p className="text-lg">En esta sección usted podrá enviarnos la retroalimentación necesaria para poder mejorar su experiencia en Granier.</p>
             
             <form onSubmit={null}>
