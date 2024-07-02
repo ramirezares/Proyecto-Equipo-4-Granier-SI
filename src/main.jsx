@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { WebRouter } from "./WebRouter.jsx";
@@ -10,11 +9,10 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <CartProvider>
-  <MenuProvider>
-    <UserProvider>
-    <RouterProvider router={WebRouter} />
-  </UserProvider>
-  </MenuProvider>
+    <MenuProvider>
+      <UserProvider>
+        <RouterProvider router={WebRouter} />
+      </UserProvider>
+    </MenuProvider>
   </CartProvider>
-  
 );

@@ -6,7 +6,7 @@ import { CiMenuFries } from "react-icons/ci";
 import { useUser } from "../hooks/useUser"; // Asegúrate de ajustar la ruta según sea necesario
 
 const ChangingNavBar = () => {
-  const { user, role } = useUser();
+  const { userData } = useUser();
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -30,7 +30,7 @@ const ChangingNavBar = () => {
     { to: "/login", text: "Inicia Sesión" },
   ];
 
-  if (!user) {
+  if (!userData) {
     return (
       <nav className="bg-blanco-hueso">
         <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4">
@@ -68,7 +68,7 @@ const ChangingNavBar = () => {
         </div>
       </nav>
     );
-  } else if (role === "employee") {
+  } else if (userData.userRole === "2") {
     const employeeLinks = [
       { to: "/inprogress", text: "Menú" },
       { to: "/inprogress", text: "Pedidos" },
@@ -114,7 +114,10 @@ const ChangingNavBar = () => {
         </div>
       </nav>
     );
-  } else if (role === "user" && window.location.pathname.includes("granier")) {
+  } else if (
+    userData.userRole === "1" &&
+    window.location.pathname.includes("granier")
+  ) {
     const granierLinks = [
       { to: "/inprogress", text: "Menú" },
       { to: "/inprogress", text: "Conócenos" },
@@ -172,7 +175,7 @@ const ChangingNavBar = () => {
       </nav>
     );
   } else {
-    const profileLinks = [{ to: "/register", text: "Perfil" }];
+    const profileLinks = [{ to: "/profile", text: "Perfil" }];
 
     return (
       <nav className="bg-blanco-hueso">
