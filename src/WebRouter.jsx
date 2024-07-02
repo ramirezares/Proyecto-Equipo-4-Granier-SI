@@ -2,7 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import LayoutPublic from "./layout/LayoutPublic.jsx";
-
+import CheckoutPage from "./pages/CheckoutPage.jsx"
 import LandingPage from "./pages/LandingPage.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
@@ -108,7 +108,7 @@ export const WebRouter = createBrowserRouter([
       {
         /*Detalles compra*/   //Componente Page Daniela
         path: "/granier/shoppingCart/details",
-        element: <ShoppingCart />,
+        element: <CheckoutPage />,
       },
       {
         /*Agradecimiento*/   //TODO:Componente Page Daniela 
