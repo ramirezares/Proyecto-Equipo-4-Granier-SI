@@ -1,28 +1,27 @@
 import Hero from "../ui/Hero";
 
-
 const AboutUs = () => {
   return (
-    <>
-    <div className="container mx-auto p-20 m-20">
-      <Hero/>
-      <div className="flex justify-center mt-10 p-10">
-        <div className="image w-1/2 mr-4">
+    <div>
+      <Hero />
+    <div className="container mx-auto p-20 ">
+      <div className="flex flex-wrap justify-center p-10 md:flex-nowrap">
+        <div className="image w-full md:w-1/2 mr-4 mb-4 md:mb-0">
           <img
-              src="/panadero-trabajando.png"
-              alt="Panadero trabajando"
-              className="rounded-lg"
+            src="/panadero-trabajando.png"
+            alt="Panadero trabajando"
+            className="rounded-lg"
           />
         </div>
-        <div className="information w-1/2">
-          <div className="information text-center mt-10">
-            <h2   style={{ color: '#AD986E' }} className="text-3xl font-bold text-orange-500">
+        <div className="information w-full md:w-1/2">
+          <div className="text-center mt-10 md:mt-0">
+            <h2 style={{ color: '#AD986E' }} className="text-3xl font-bold text-orange-500">
               De lo pequeño
             </h2>
-            <h2  style={{ color: '#34394B' }} className="text-5xl font-bold text-orange-500">
+            <h2 style={{ color: '#34394B' }} className="text-5xl font-bold text-orange-500">
               A lo grande
             </h2>
-            <br/>
+            <br />
             <p className="text-lg mt-5">
               Los orígenes de Granier se establecen en la panadería de barrio, de ahí
               el arraigo de la marca al comercio de proximidad y al oficio de
@@ -42,9 +41,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      
-      <div className="grid grid-cols-3 gap-4 mt-10">
-
+      <div className="grid sm:grid-cols-3 gap-4 mt-10">
         <div className="bg-auto rounded-lg p-6">
           <img
             src="/mapa-del-mundo.png"
@@ -62,19 +59,15 @@ const AboutUs = () => {
         </div>
 
         <div className="bg-auto rounded-lg p-6">
-
           <img
             src="/mapa-del-mundo2.png"
             alt="Mapa con pin"
             className="rounded-lg"
           />
-          
         </div>
-        
       </div>
     </div>
-      
-    </>
+    </div>
   );
 };
 

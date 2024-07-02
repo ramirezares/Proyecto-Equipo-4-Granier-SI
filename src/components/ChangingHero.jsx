@@ -37,7 +37,7 @@ const ChangingHero = () => {
   if (isAboutUsPage){
     return (
       <div className="hero about-granier-hero">
-        <img src="/HeroAboutUsGranier.png" alt="" />
+        <img className="w-full" src="/HeroAboutUsGranier.png" alt="" />
       </div>
     );
   }
