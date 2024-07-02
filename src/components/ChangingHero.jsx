@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ChangingHero.style.css';
 import { Link } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ const ChangingHero = () => {
   if (isAboutUsPage){
     return (
       <div className="hero about-granier-hero">
-        <img src="/HeroAboutUsGranier.png" alt="" />
+        <img className="w-full" src="/HeroAboutUsGranier.png" alt="" />
       </div>
     );
   }

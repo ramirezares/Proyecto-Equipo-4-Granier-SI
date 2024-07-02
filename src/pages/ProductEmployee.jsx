@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ImageGallery from "../components/ImageGallery.jsx";
 import "./ProductPage.style.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const initialProducts = [
   {
@@ -96,23 +97,18 @@ const ProductPage = () => {
             <p className="font-bold mr-4">Estado: {product.status}</p>
           </div>
           <div>
-            <p className="font-bold">
-              Cantidad:
-              <input
-                type="number"
-                value={quantity}
-                min="1"
-                max="10"
-                onChange={handleQuantityChange}
-              />
-            </p>
           </div>
         </div>
         <div className="details">
           <p className="label font-bold">Descripción:</p>
           <p className="description border-2 pb-20 rounded-lg">{product.description}</p>
-          <div className="justify-center flex mt-20 mb-20">
-            <button className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-beige-granier hover:bg-beige-granier"> + Agregar al carrito</button>
+          <div className="justify-center flex mt-20 mb-20 gap-4">
+            <Link to={`/granier/employee/menu/product/${product.name}/setting`}>
+            <button className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-beige-granier hover:bg-beige-granier">Editar producto</button>
+            </Link>
+            <Link onClick={() => {console.log("Eliminado")}}>
+            <button className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-red-700 hover:bg-red-700">Eliminar producto</button>
+            </Link>
           </div>
         </div>
       </div>
