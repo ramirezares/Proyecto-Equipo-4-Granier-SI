@@ -1,6 +1,6 @@
 //import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-
+import Greetings from "./pages/Greetings.jsx"
 import LayoutPublic from "./layout/LayoutPublic.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx"
 import LandingPage from "./pages/LandingPage.jsx";
@@ -112,8 +112,8 @@ export const WebRouter = createBrowserRouter([
       },
       {
         /*Agradecimiento*/   //TODO:Componente Page Daniela 
-        path: "/granier/gratitude",
-        element: <ShoppingCart />,
+        path: "/granier/successful",
+        element: <Greetings />,
       },
       {
         /*Sugerencias*/  
