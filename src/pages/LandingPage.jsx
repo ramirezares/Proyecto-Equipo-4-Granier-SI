@@ -16,6 +16,7 @@ const LandingPage = () => {
               src="/Granier-Photo-Button.png"
               alt="Foto Granier"
             />
+
           </a>
           <a href="/inprogress">
             <img

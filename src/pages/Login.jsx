@@ -9,6 +9,7 @@ import {
 import { usePassword } from "../hooks/password";
 import { useRequired } from "../hooks/requiered";
 import { useUser } from "../hooks/useUser";
+import PopUp from "../components/PopUp.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { handleButtonClick } = useRequired();
   const { setUser, userData } = useUser();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (userData) {
@@ -31,24 +33,60 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     handleButtonClick(true);
-    const user = await loginWithCredentials(email, password);
-    if (user) {
-      setUser(user);
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener más de 6 caracteres.");
+    }
+
+    try {
+      const user = await loginWithCredentials(email, password);
+      if (user) {
+        setUser(user);
+      } else {
+        setError("Revise los datos ingresados e intente nuevamente.");
+      }
+    } catch (error) {
+      console.log(error);
+      setError(
+        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+          error.message
+      );
+      return;
     }
   };
 
   const handleGoogleLogin = async () => {
-    const user = await signInGoogle();
-    if (user) {
-      setUser(user);
+    try {
+      const user = await signInGoogle();
+      if (user) {
+        setUser(user);
+      }
+    } catch (error) {
+      setError(
+        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+          error.message
+      );
+      return;
     }
   };
 
   const handleFacebookLogin = async () => {
-    const user = await signInFacebook();
-    if (user) {
-      setUser(user);
+    try {
+      const user = await signInFacebook();
+      if (user) {
+        setUser(user);
+      }
+    } catch (error) {
+      setError(
+        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+          error.message
+      );
+      return;
     }
+  };
+
+  const handleCloseError = () => {
+    setError(null);
   };
 
   return (
@@ -213,6 +251,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {error && <PopUp text={error} onClose={handleCloseError} />}
     </div>
   );
 };

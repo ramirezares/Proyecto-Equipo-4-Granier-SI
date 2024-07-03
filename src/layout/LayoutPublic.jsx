@@ -9,7 +9,8 @@ const LayoutPublic = () => {
     window.location.pathname.includes("login") ||
     window.location.pathname.includes("register")
   ) {
-    /*Colocar con un PopUp sin boton
+    /* TODO
+    Colocar con un PopUp sin boton
     {navigation.state === "loading" && (
                     <div className="alert alert-info my-5">Loading...</div>
                 )}
@@ -26,7 +27,7 @@ const LayoutPublic = () => {
     return (
       <>
         <NavBar />
-        <main className="contanier">
+        <main>
           <Outlet />
         </main>
         <Footer />
