@@ -1,0 +1,88 @@
+[
+    {
+      "name": "Mocaccino caliente",
+      "description": "Mocaccino. 125ml.",
+      "price": 2.5,
+      "images": ["/", "/"],
+      "foodPreference": "-",
+      "kindProduct": "Bebida",
+      "kindFood": "Merienda",
+      "status": "Disponible"
+    },
+    {
+      "name": "Ice Latte",
+      "description": "Frio. 250ml.",
+      "price": 3.0,
+      "images": ["/", "/"],
+      "foodPreference": "-",
+      "kindProduct": "Bebida",
+      "kindFood": "Merienda",
+      "status": "Disponible"
+    },
+    {
+      "name": "Te Lipton",
+      "description": "Sabores: Durazno o limon. 500 ml.",
+      "price": 3.0,
+      "images": ["/", "/"],
+      "foodPreference": "-",
+      "kindProduct": "Bebida",
+      "kindFood": "Merienda",
+      "status": "Disponible"
+    },
+    {
+      "name": "Palmeritas",
+      "description": "Caja de 150 gramos de deliciosas palmeritas.",
+      "price": 1.5,
+      "images": ["/", "/"],
+      "foodPreference": "-",
+      "kindProduct": "Platillo",
+      "kindFood": "Merienda",
+      "status": "Disponible"
+    },
+    {
+      "name": "Croissant relleno",
+      "description": "Croissant relleno con jamon y queso crema.",
+      "price": 4.0,
+      "images": ["/", "/"],
+      "foodPreference": "-",
+      "kindProduct": "Platillo",
+      "kindFood": "Desayuno",
+      "status": "Disponible"
+    },
+    {
+      "name": "Sandwich gluten free",
+      "description": "Sandwich con lechuga, tocineta y queso.",
+      "price": 5.99,
+      "images": ["/", "/"],
+      "foodPreference": {
+        "Vegetariano": true
+      },
+      "kindProduct": "Platillo",
+      "kindFood": "Desayuno",
+      "status": "Disponible"
+    },
+    {
+      "name": "Focaccia Italiana",
+      "description": "Focaccia horneada con pesto y clásicos ingredientes de una clásica ensalada caprese: tomate, mozzarella y lechuga.",
+      "price": 2.9,
+      "images": ["/", "/"],
+      "foodPreference": {
+        "LibreDeGluten": true
+      },
+      "kindProduct": "Platillo",
+      "kindFood": "Merienda",
+      "status": "Disponible"
+    },
+    {
+      "name": "Ensalada Cesar Vegana",
+      "description": "Ensalada cesar con lechuga, tofu y especias.",
+      "price": 5.99,
+      "images": ["/", "/"],
+      "foodPreference": {
+        "Vegano": true
+      },
+      "kindProduct": "Platillo",
+      "kindFood": "Desayuno",
+      "status": "Disponible"
+    }
+  ]  

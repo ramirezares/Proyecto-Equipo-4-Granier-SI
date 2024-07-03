@@ -1,26 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import "../components/ChangingNavBar.style.css";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
 import { useUser } from "../hooks/useUser";
+import { logOut } from "../controllers/auth";
+import "../components/ChangingNavBar.style.css";
 
 const ChangingNavBar = () => {
-  const { userData } = useUser();
-  console.log(userData) 
+  const { user, setUser } = useUser();
+  const navigate = useNavigate();
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
 
+  const handleLogout = async () => {
+    await logOut();
+    localStorage.clear();
+    setUser(null);
+    navigate("/login");
+  };
+
   const renderContent = (links) => (
     <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-blanco-hueso transition">
       <ul className="text-center text-xl p-20">
-        {links.map(({ to, text }) => (
-          <Link key={to} to={to}>
-            <li className="my-4 py-4 border-b border-naranja-unimet hover:bg-naranja-unimet hover-rounded">
-              {text}
-            </li>
-          </Link>
+        {links.map(({ to, text, onClick }) => (
+          <li
+            key={to}
+            className="my-4 py-4 border-b border-naranja-unimet hover:bg-naranja-unimet hover-rounded"
+          >
+            {onClick ? (
+              <button onClick={onClick}>{text}</button>
+            ) : (
+              <Link to={to}>{text}</Link>
+            )}
+          </li>
         ))}
       </ul>
     </div>
@@ -31,7 +44,7 @@ const ChangingNavBar = () => {
     { to: "/login", text: "Inicia Sesión" },
   ];
 
-  if (!userData) {
+  if (!user) {
     return (
       <nav className="bg-blanco-hueso">
         <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4">
@@ -69,11 +82,11 @@ const ChangingNavBar = () => {
         </div>
       </nav>
     );
-  } else if (userData.userRole === "2") {
+  } else if (user.userRole === "2") {
     const employeeLinks = [
-      { to: "/inprogress", text: "Menú" },
-      { to: "/inprogress", text: "Pedidos" },
-      { to: "/inprogress", text: "Cerrar Sesión" },
+      { to: "/granier/employee/menu", text: "Menú" },
+      { to: "/granier/employee/orders", text: "Pedidos" },
+      { to: "/login", text: "Cerrar Sesión", onClick: handleLogout },
     ];
 
     return (
@@ -94,12 +107,17 @@ const ChangingNavBar = () => {
           <div className="lg:flex md:flex lg:flex-1 items-center justify-end font-normal hidden">
             <div className="flex-10">
               <ul className="flex gap-8">
-                {employeeLinks.map(({ to, text }) => (
-                  <Link key={to} to={to}>
-                    <li className="hover:text-naranja-unimet transition border-b-2 hover:border-naranja-unimet cursor-pointer">
-                      {text}
-                    </li>
-                  </Link>
+                {employeeLinks.map(({ to, text, onClick }) => (
+                  <li
+                    key={to}
+                    className="hover:text-naranja-unimet transition border-b-2 hover:border-naranja-unimet cursor-pointer"
+                  >
+                    {onClick ? (
+                      <button onClick={onClick}>{text}</button>
+                    ) : (
+                      <Link to={to}>{text}</Link>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -116,14 +134,14 @@ const ChangingNavBar = () => {
       </nav>
     );
   } else if (
-    userData.userRole === "1" &&
+    user.userRole === "1" &&
     window.location.pathname.includes("granier")
   ) {
     const granierLinks = [
-      { to: "/inprogress", text: "Menú" },
-      { to: "/inprogress", text: "Conócenos" },
-      { to: "/inprogress", text: "Carrito" },
-      { to: "/inprogress", text: "Perfil" },
+      { to: "/granier/menu", text: "Menú" },
+      { to: "/granier/aboutUs", text: "Conócenos" },
+      { to: "/granier/shoppingCart", text: "Carrito" },
+      { to: "/profile", text: "Perfil" },
     ];
 
     return (

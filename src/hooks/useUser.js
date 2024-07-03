@@ -4,18 +4,20 @@ import { getUserData } from "../controllers/auth"; // Asegúrate de ajustar la r
 
 export function useUser() {
   const { user, setUser } = useContext(UserContext);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(user);
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
         const data = await getUserData(user.email);
         setUserData(data);
+      } else {
+        setUserData(null);
       }
     };
 
     fetchUserData();
   }, [user]);
 
-  return { user: userData, setUser, userData, setUserData };
+  return { user: userData, setUser };
 }
