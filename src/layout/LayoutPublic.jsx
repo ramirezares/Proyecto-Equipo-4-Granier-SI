@@ -1,10 +1,8 @@
-import React from "react";
-import { Outlet, useNavigation } from "react-router-dom";
-import NavBar from "../ui/NavBar";
+import { Outlet } from "react-router-dom";
+import NavBar from "../components/ChangingNavBar";
 import Footer from "../ui/Footer";
 
 const LayoutPublic = () => {
-  const navigation = useNavigation();
 
   //Validar que no haya usuario activo con firebase
   if (
