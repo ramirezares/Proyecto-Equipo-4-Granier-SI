@@ -87,11 +87,11 @@ const Register = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap">
+        <div className="md:flex flex-wrap mx-8">
           {/*Registro Correo */}
           <div className="max-w-xl w-2/3 container mx-auto">
             <div
-              className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg"
+              className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg "
               id="input"
             >
               <h4 className="text-2xl font-bold mb-4">
@@ -137,9 +137,9 @@ const Register = () => {
                   </div>
                 </div>
 
-                <div className="mb-3 flex gap-4">
+                <div className="mb-3 sm:flex gap-4">
                   {/*Telefono Listo */}
-                  <div className="relative w-1/2">
+                  <div className="relative w-40 sm:w-1/2 sm:mb-12 mb-8 sm:mb-0">
                     <span className="absolute start-0 bottom-3 text-black">
                       <svg
                         className="w-4 h-4 rtl:rotate-[270deg]"
@@ -160,13 +160,13 @@ const Register = () => {
                       onChange={(e) => setPhone(e.target.value)}
                       required
                     />
-                    <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                    <label className="absolute  text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                       Número de Teléfono
                     </label>
                   </div>
 
                   {/*Correo Listo */}
-                  <div className="relative w-1/2">
+                  <div className="relative md:m-0 mb-8 sm:w-1/2">
                     <input
                       type="email"
                       name="Apellido"
@@ -176,7 +176,7 @@ const Register = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-                    <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    <label className=" peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                       Correo Electrónico
                     </label>
                   </div>
@@ -309,7 +309,7 @@ const Register = () => {
           </div>
 
           {/*Registro rápido*/}
-          <div className="max-w-md w-1/3 container mx-auto">
+          <div className="max-w-md mt-12 sm:my-0 md:w-1/3 container mx-auto">
             <div
               className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg"
               id="input"
