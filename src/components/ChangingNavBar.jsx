@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import "../components/ChangingNavBar.style.css";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
-import { useUser } from "../hooks/useUser"; // Asegúrate de ajustar la ruta según sea necesario
+import { useUser } from "../hooks/useUser";
 
 const ChangingNavBar = () => {
   const { userData } = useUser();
+  console.log(userData) 
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
