@@ -1,12 +1,9 @@
-import React from "react";
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavBar from "../components/ChangingNavBar";
 import Footer from "../ui/Footer";
 
 const LayoutPublic = () => {
-  
-  const navigation = useNavigation();
-  
+
   //Validar que no haya usuario activo con firebase
   if (
     window.location.pathname.includes("login") ||
@@ -20,7 +17,6 @@ const LayoutPublic = () => {
     return (
       <>
         <main className="contanier">
-        
           <Outlet />
         </main>
         <Footer />

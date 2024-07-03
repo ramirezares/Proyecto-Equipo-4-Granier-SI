@@ -1,5 +1,5 @@
+// main.jsx
 import ReactDOM from "react-dom/client";
-
 import { WebRouter } from "./WebRouter.jsx";
 import { RouterProvider } from "react-router-dom";
 import { UserProvider } from "./hooks/UserContext.jsx"; // Asegúrate de ajustar la ruta si es necesario
@@ -8,11 +8,11 @@ import { CartProvider } from "./hooks/CartContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider>
+  <UserProvider>
     <MenuProvider>
-      <UserProvider>
+      <CartProvider>
         <RouterProvider router={WebRouter} />
-      </UserProvider>
+      </CartProvider>
     </MenuProvider>
-  </CartProvider>
+  </UserProvider>
 );
