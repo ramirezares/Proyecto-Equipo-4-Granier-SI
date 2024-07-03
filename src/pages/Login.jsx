@@ -17,18 +17,18 @@ const Login = () => {
   const { isVisible, handlePasswordClick } = usePassword();
   const navigate = useNavigate();
   const { handleButtonClick } = useRequired();
-  const { setUser, userData } = useUser();
+  const { setUser, user } = useUser(); // Cambiado userData a user
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (userData) {
-      if (userData.userRole === "2") {
+    if (user) {
+      if (user.userRole === "2") {
         navigate("/granier/homeEmployee");
-      } else if (userData.userRole === "1") {
+      } else if (user.userRole === "1") {
         navigate("/");
       }
     }
-  }, [userData, navigate]);
+  }, [user, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -36,6 +36,7 @@ const Login = () => {
 
     if (password.length < 6) {
       setError("La contraseña debe tener más de 6 caracteres.");
+      return; // Agregar return para detener la ejecución si hay un error
     }
 
     try {
@@ -48,10 +49,9 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       setError(
-        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+        "Error iniciando sesión, revise e intente nuevamente. Error: " +
           error.message
       );
-      return;
     }
   };
 
@@ -63,10 +63,9 @@ const Login = () => {
       }
     } catch (error) {
       setError(
-        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+        "Error iniciando sesión, revise e intente nuevamente. Error: " +
           error.message
       );
-      return;
     }
   };
 
@@ -78,10 +77,9 @@ const Login = () => {
       }
     } catch (error) {
       setError(
-        "Error iniciando sesion, revise e intente nuevamente. Error:" +
+        "Error iniciando sesión, revise e intente nuevamente. Error: " +
           error.message
       );
-      return;
     }
   };
 
