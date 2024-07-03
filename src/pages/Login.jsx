@@ -103,8 +103,8 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="flex justify-between mx-auto mb-10">
-        <div className="LOGIN flex flex-wrap mx-auto w-1/2">
+      <div className="sm:flex justify-between mx-auto mb-10">
+        <div className="LOGIN flex flex-wrap mx-auto md:w-1/2">
           <div className="max-w-xl container mx-auto" id="input">
             <div
               className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg"
@@ -173,7 +173,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="max-w-lg w-1/2 container mx-auto">
+        <div className="max-w-lg md:w-1/2 mt-8 md:mt-0 container mx-auto">
           <div
             className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg"
             id="input"
