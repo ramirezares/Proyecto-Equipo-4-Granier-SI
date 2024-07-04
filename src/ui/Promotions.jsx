@@ -5,8 +5,10 @@ const Promotions = (props) => {
 
   return (
     <div className="promos">
-      <h1>Promos Destacadas</h1>
-      <div className="promotions">
+      <div className="flex justify-center  ">
+      <h1 className="text-white font-robotoBold md:text-5xl text-3xl p-8">Promos Destacadas</h1>
+      </div>
+      <div className="promotions-grid">
         {props.promotions.map((promo, index) => (
           <Card key={index} item={promo} />
         ))}

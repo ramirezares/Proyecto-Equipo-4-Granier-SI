@@ -1,10 +1,49 @@
-.promos{
+/*.promos{
   background-color: #34394B;
   color: #ffffff;
 }
+*/
 
 .promotions {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.promotions-grid {
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+/* Big screen size */
+@media (max-width: 1200px) {
+  .promotions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* Medium screen size (e.g., tablets) */
+@media (max-width: 768px) {
+  .promotions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screen size (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .promotions-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Extra small screen size (e.g., small mobile phones) */
+@media (max-width: 320px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
