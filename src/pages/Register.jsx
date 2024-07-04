@@ -378,7 +378,7 @@ const Register = () => {
                 <button
                   type="button"
                   className="mx-auto mt-4 w-full px-4 py-2 bg-[#FF8200] text-white font-bold rounded-lg hover:bg-[#FFAA51] focus:outline-none focus:ring focus:ring-blue-300"
-                  onClick={() => navigate("/register")}
+                  onClick={() => navigate("/login")}
                 >
                   Inicia Sesión
                 </button>

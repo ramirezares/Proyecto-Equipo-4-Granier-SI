@@ -6,13 +6,16 @@ import { UserProvider } from "./hooks/UserContext.jsx"; // Asegúrate de ajustar
 import { MenuProvider } from "./hooks/MenuContext.jsx";
 import { CartProvider } from "./hooks/CartContext.jsx";
 import "./index.css";
+import { OrdersProvider } from "./hooks/OrdersContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserProvider>
-    <MenuProvider>
-      <CartProvider>
-        <RouterProvider router={WebRouter} />
-      </CartProvider>
-    </MenuProvider>
-  </UserProvider>
+  <OrdersProvider>
+    <UserProvider>
+      <MenuProvider>
+        <CartProvider>
+          <RouterProvider router={WebRouter} />
+        </CartProvider>
+      </MenuProvider>
+    </UserProvider>
+  </OrdersProvider>
 );

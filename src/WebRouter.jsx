@@ -101,17 +101,17 @@ export const WebRouter = createBrowserRouter([
         element: <ProductPage />,
       },
       {
-        /*Carrito*/   //TODO - HACER
+        /*Carrito*/   
         path: "/granier/shoppingCart",
         element: <ShoppingCart />,
       },
       {
-        /*Detalles compra*/   //Componente Page Daniela
+        /*Detalles compra*/
         path: "/granier/shoppingCart/details",
         element: <CheckoutPage />,
       },
       {
-        /*Agradecimiento*/   //TODO:Componente Page Daniela 
+        /*Agradecimiento*/
         path: "/granier/shoppingcart/successful",
         element: <Greetings />,
       },

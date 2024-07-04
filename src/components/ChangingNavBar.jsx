@@ -165,12 +165,12 @@ const ChangingNavBar = () => {
                     </li>
                   </Link>
                 ))}
-                <Link to="/inprogress">
+                <Link to="/granier/shoppingCart">
                   <li>
                     <img className="w-10 mt-2" src="/Carrito.png" alt="" />
                   </li>
                 </Link>
-                <Link to="/inprogress">
+                <Link to="/profile">
                   <li>
                     <img
                       className="w-12"
