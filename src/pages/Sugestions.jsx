@@ -10,9 +10,11 @@ const Sugestions = () => {
     const[message, setMessage]=useState('');
     const[concept, setConcept]=useState('');
 
-    setEmail(userData.email);
+    console.log(userData)
+    
 
     const handleSubmit =(e)=>{
+        setEmail(userData.email);
         e.preventDefault
         const serviceId='service_ivg35m1';
         const templateId='template_suvzcia';
@@ -43,12 +45,12 @@ const Sugestions = () => {
         <div className="border-2  border-gray-200 max-w-3xl mx-4 sm:mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md" >
             <h1 style={{ color: '#34394B' }} className="text-3xl font-black mb-4 ">Sugerencias y Reclamos</h1>
             <hr className="h-px mb-5 bg-gray-300 border-0" />
-            <p className="text-lg">En esta sección usted podrá enviarnos la retroalimentación necesaria para poder mejorar su experiencia en Granier.</p>
+            <p className="text-lg mb-6">En esta sección usted podrá enviarnos la retroalimentación necesaria para poder mejorar su experiencia en Granier.</p>
             
             <form id="form" onSubmit={handleSubmit}>
 
                 {/*Input Pequeño */}
-                <div className="block mb-6">
+                <div className="block mb-2">
                     <label className="block mb-2 text-sm font-medium text-gray-900">Concepto</label>
                     <input 
                         name="concept"
