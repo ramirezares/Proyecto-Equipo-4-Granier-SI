@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { addProduct } from "../controllers/product";
+import { uploadImage } from "../controllers/image";
 
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
@@ -10,32 +12,56 @@ const AddProduct = () => {
   const [radioGroup3, setRadioGroup3] = useState("");
   const [checkboxGroup, setCheckboxGroup] = useState([]);
 
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add product logic here
-    
-      console.log(
-        "Product added:",
-        productName,
-        productDescription,
-        productPrice,
-        productImage,
-        radioGroup1,
-        radioGroup2,
-        radioGroup3,
-        checkboxGroup
-      );
-    
+
+    try {
+      // Subir la imagen si hay una seleccionada
+      let imageUrl = "";
+      if (productImage) {
+        const uploadResult = await uploadImage(productImage);
+        imageUrl = uploadResult.url;
+      }
+
+      // Crear el producto
+      const newProduct = {
+        name: productName,
+        description: productDescription,
+        price: parseFloat(productPrice),
+        images: imageUrl,
+        type: radioGroup1,
+        kindProduct: radioGroup2,
+        kindFood: radioGroup3,
+        foodPreference: checkboxGroup,
+      };
+
+      const productId = await addProduct(newProduct);
+      console.log("Producto añadido con ID:", productId);
+    } catch (error) {
+      console.error("Error al añadir el producto:", error);
+    }
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setCheckboxGroup((prev) =>
+      checked ? [...prev, value] : prev.filter((v) => v !== value)
+    );
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProductImage(file);
+    }
   };
 
   return (
-    <div className="border-2  border-gray-200 max-w-3xl mx-4 sm:mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md">
+    <div className="border-2 border-gray-200 max-w-3xl mx-4 sm:mx-auto p-4 pt-6 pb-8 m-10 bg-white rounded shadow-md">
       <h2 className="text-2xl font-bold mb-4">
         Creación de Producto/Promoción
       </h2>
-      <hr className="h-px mb-5 bg-gray-200 border-0"></hr>
+      <hr className="h-px mb-5 bg-gray-200 border-0" />
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
         <div className="flex flex-wrap -mx-3">
           {/*Nombre del Producto */}
@@ -104,7 +130,7 @@ const AddProduct = () => {
               aria-describedby="user_avatar_help"
               id="productImage"
               type="file"
-              onChange={(e) => setProductImage(e.target.value)}
+              onChange={handleImageChange}
               required
             />
             <div
@@ -115,19 +141,17 @@ const AddProduct = () => {
         </div>
 
         <hr className="h-px mb-5 bg-gray-200 border-0"></hr>
-        <div className="flex flex-wrap -mx-3 font-bold  block mb-5 text-gray-700">
+        <div className="flex flex-wrap -mx-3 font-bold mb-5 text-gray-700">
           <h1>Características del Producto/Promoción</h1>
         </div>
 
         <div className="flex flex-wrap -mx-3">
-
           <div className="grid md:grid-cols-2 md:gap-6">
             {/* Radio Group 1 */}
             <div className="relative mb-5 group">
               <label className="block mb-2 text-sm font-medium text-gray-900">
                 Creación de
               </label>
-
               <div className="flex flex-wrap mx-3">
                 {/*Grupo 1 Opcion 1 */}
                 <div className="w-full md:w-1/2 px-3 mb-5">
@@ -152,7 +176,6 @@ const AddProduct = () => {
                   />
                   <label className="ml-2 text-sm text-gray-600">Producto</label>
                 </div>
-
               </div>
             </div>
 
@@ -211,8 +234,7 @@ const AddProduct = () => {
                 </div>
               </div>
             </div>
-            </div>
-
+          </div>
 
           <div className="grid md:grid-cols-2 md:gap-6">
             {/* Radio Group 2 */}
@@ -244,15 +266,13 @@ const AddProduct = () => {
                   />
                   <label className="ml-2 text-sm text-gray-600">Comida</label>
                 </div>
-
               </div>
             </div>
-          
+
             {/* Checkbox Group */}
             <div className="relative mb-5 group">
-
               <label className="block mb-2 text-sm font-medium text-gray-900">
-              Preferencias alimentarias
+                Preferencias alimentarias
               </label>
 
               <div className="flex flex-wrap -mx-3">
@@ -263,7 +283,7 @@ const AddProduct = () => {
                     id="checkbox1"
                     name="checkboxGroup"
                     value="vegan"
-                    onChange={(e) => setCheckboxGroup(e.target.checked)}
+                    onChange={handleCheckboxChange}
                   />
                   <label className="ml-2 text-sm text-gray-600">Vegana</label>
                 </div>
@@ -274,10 +294,12 @@ const AddProduct = () => {
                     type="checkbox"
                     id="checkbox2"
                     name="checkboxGroup"
-                    value="vegetariam"
-                    onChange={(e) => setCheckboxGroup(e.target.checked)}
+                    value="vegetarian"
+                    onChange={handleCheckboxChange}
                   />
-                  <label className="ml-2 text-sm text-gray-600">Vegetariana</label>
+                  <label className="ml-2 text-sm text-gray-600">
+                    Vegetariana
+                  </label>
                 </div>
 
                 {/*Checkbox Opcion 3 */}
@@ -287,16 +309,15 @@ const AddProduct = () => {
                     id="checkbox3"
                     name="checkboxGroup"
                     value="glutenFree"
-                    onChange={(e) => setCheckboxGroup(e.target.checked)}
+                    onChange={handleCheckboxChange}
                   />
-                  <label className="ml-2 text-sm text-gray-600">Libre de Glutén</label>
+                  <label className="ml-2 text-sm text-gray-600">
+                    Libre de Glutén
+                  </label>
                 </div>
-              
               </div>
-
-            </div> 
+            </div>
           </div>
-
         </div>
 
         {/*Boton de Submit */}
