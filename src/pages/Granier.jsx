@@ -30,17 +30,17 @@ const reviews = [
 const Granier = () => {
   return (
     <>
-      <div>
+      <div className="bg-azul-oscuro-granier">
         <Hero/>
         <Promotions promotions={promotions}/>
         <Products products={products}/>
         <Reviews reviews={reviews}/>
-        <div className="our-contacts">
-          <p>¿Deseas comunicarte con nosotros?</p>
-          <Link to="/granier/contact" className='bordered-blue-background'>
+        <div className="our-contacts md:flex-row flex-col md:justify-around  font-robotoRegular p-4 gap-4 ">
+          <p className="font-robotoBold md:text-xl mt-3 mx-auto">¿Deseas comunicarte con Nosotros?</p>
+          <Link to="/granier/contact" className='rounded-full hover:bg-naranja-unimet border-0 bordered-blue-background'>
           Información de contacto
           </Link>
-          <Link to="/granier/sugestions" className='bordered-blue-background'>
+          <Link to="/granier/sugestions" className='rounded-full hover:bg-naranja-unimet border-0 bordered-blue-background'>
           Sugerencias y reclamos
           </Link>
         </div>
