@@ -339,7 +339,7 @@ const Register = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Inicia Sesión con Google
+                  Regístrate con Google
                 </button>
               </div>
 
@@ -365,7 +365,7 @@ const Register = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Inicia Sesión con Facebook
+                  Regístrate con Facebook
                 </button>
               </div>
 
