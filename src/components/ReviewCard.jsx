@@ -3,16 +3,16 @@ import './ReviewCard.style.css';
 
 const ReviewCard = ({ review, onNext, onPrev }) => {
   return (
-    <div className="review-card">
+    <div className="review-card w-full justify-between font-robotoRegular">
       <button className="review-arrow left" onClick={onPrev}>◀</button>
-      <div className="review-avatar">
-      <img src="/Logoperfilusuarioengranier.png" alt="" />
+      <div className="review-avatar ">
+      <img className="" src="/Logoperfilusuarioengranier.png" alt="" />
       </div>
       <div className="review-text">
         <p>{review.user}</p>
         <p>{review.text}</p>
       </div>
-      <button className="review-arrow right" onClick={onNext}>▶</button>
+      <button className="review-arrow right " onClick={onNext}>▶</button>
     </div>
   );
 };
