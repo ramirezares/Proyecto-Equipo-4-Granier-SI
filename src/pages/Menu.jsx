@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import SearchBar from '../ui/SearchBar';
 import MenuCards from '../ui/MenuCards.jsx';
 import { MenuContext } from '../hooks/MenuContext.jsx';

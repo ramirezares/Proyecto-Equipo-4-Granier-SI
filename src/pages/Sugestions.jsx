@@ -9,8 +9,6 @@ const Sugestions = () => {
   const [message, setMessage] = useState("");
   const [concept, setConcept] = useState("");
 
-  console.log(user);
-
   const handleSubmit = (e) => {
     setEmail(user.email);
     e.preventDefault;
