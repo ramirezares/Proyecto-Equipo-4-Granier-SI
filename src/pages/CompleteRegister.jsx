@@ -29,23 +29,33 @@ const CompleteRegister = () => {
   console.log(phone,  departmentOrCareer,foodPreferences)
 
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-center mt-10 p-10">
+    <div className="container mx-auto mb-32">
+      <div className="md:items-center  md:flex justify-center mt-10 p-10">
         {/*Div de Imagen MetroEats */}
-        <div className="image w-1/2 flex justify-center items-center p-15  ml-20">
-          <img src="/MetroEats.png" className="rounded-lg" alt="Logo Unimet" />
+        <div className="mx-auto mb-10">
+        <div className="flex flex-wrap">
+          {/*Imagen */}
+          <div className=" w-full sm:w-96">
+            <img
+              src="/MetroEats.png"
+              className="mx-auto d-block mt-5 mb-10"
+              alt="Logo Unimet"
+
+            />
+          </div>
+        </div>
         </div>
 
         {/*Div de Formulario */}
-        <form onSubmit={null} className="w-1/2 flex justify-center">
-          <div className="border-2 border-gray-200 flex flex-col items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg">
+        <form onSubmit={null} className="w-1/2 flex justify-center mx-auto">
+          <div className="border-2 mx-auto border-gray-200 flex flex-col items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg">
             <div>
               <h2 className="text-2xl font-semibold mt-5 mb-10">Paso Final de Registro</h2>
             </div>
 
             {/*Numero de Telefono */}
-            <div className="mb-3">
-            <div className="relative">
+            <div className="mb-3 ">
+            <div className="relative w-40">
                 <span className="absolute start-0 bottom-3 text-black">
                     <svg className="w-4 h-4 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 19 18">
                         <path d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"/>
