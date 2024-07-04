@@ -4,33 +4,42 @@ import {
   addProductToCart,
   removeProductFromCart,
   updateCartState,
-  calculateSubtotal,
+  createCart,
 } from "../controllers/cartController"; // Ajusta la ruta según sea necesario
+import { useUser } from "./useUser";
 
-export const useCart = (uid) => {
+export const useCart = () => {
+  const { user } = useUser();
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCart = async () => {
-      try {
-        const cartData = await getCartByUserId(uid);
-        setCart(cartData);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+      if (user) {
+        try {
+          const existingCart = await getCartByUserId(user.uid);
+          if (existingCart.estado === "activo") {
+            setCart(existingCart);
+          } else {
+            const newCart = await createCart(user.uid);
+            setCart(newCart);
+          }
+          setLoading(false);
+        } catch (err) {
+          setError(err.message);
+          setLoading(false);
+        }
       }
     };
 
     fetchCart();
-  }, [uid]);
+  }, [user]);
 
   const addProduct = async (productId) => {
     try {
-      await addProductToCart(uid, productId);
-      const updatedCart = await getCartByUserId(uid);
+      await addProductToCart(cart.uidUsuario, productId);
+      const updatedCart = await getCartByUserId(cart.uidUsuario);
       setCart(updatedCart);
     } catch (err) {
       setError(err.message);
@@ -39,28 +48,18 @@ export const useCart = (uid) => {
 
   const removeProduct = async (productId) => {
     try {
-      await removeProductFromCart(uid, productId);
-      const updatedCart = await getCartByUserId(uid);
+      await removeProductFromCart(cart.uidUsuario, productId);
+      const updatedCart = await getCartByUserId(cart.uidUsuario);
       setCart(updatedCart);
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const updateState = async (estado) => {
+  const completeCart = async () => {
     try {
-      await updateCartState(uid, estado);
-      const updatedCart = await getCartByUserId(uid);
-      setCart(updatedCart);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
-
-  const calculateCartSubtotal = async () => {
-    try {
-      const subtotal = await calculateSubtotal(uid);
-      setCart((prevCart) => ({ ...prevCart, subtotal }));
+      await updateCartState(cart.uidUsuario, "completado");
+      setCart(null); // Clear cart after completion
     } catch (err) {
       setError(err.message);
     }
@@ -72,7 +71,6 @@ export const useCart = (uid) => {
     error,
     addProduct,
     removeProduct,
-    updateState,
-    calculateCartSubtotal,
+    completeCart,
   };
 };
