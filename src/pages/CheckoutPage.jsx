@@ -56,7 +56,7 @@ function CheckoutPage() {
     return (
       <div className="md:flex flex-wrap justify-center md:mx-auto my-10">
 
-        <div className=" max-w-lg sm:w-1/2 w-80 md:mr-20 container mx-auto mb-4">
+        <div className=" max-w-lg sm:w-1/2 w-80  container mx-auto mb-4">
           <div className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg" id="input">
             <label className="block mb-2 text-lg font-bold text-gray-900">
                     Detalles de la Orden
@@ -110,7 +110,7 @@ function CheckoutPage() {
           </div>
         </div>
         
-        <div className=" max-w-lg md:w-1/2 w-80 md:ml-20 container mx-auto">
+        <div className=" max-w-lg md:w-1/2 w-80  container mx-auto">
           <div className="border-2 border-gray-200 items-center justify-center p-10 bg-white rounded-lg drop-shadow-lg" id="input">
             <h2 className="block mb-2 text-lg font-bold text-gray-900">Resumen de Pedido</h2>
             
