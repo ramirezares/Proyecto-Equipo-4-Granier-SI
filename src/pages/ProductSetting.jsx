@@ -4,9 +4,6 @@ const ProductSetting = () => {
     const [productDescription, setProductDescription] = useState("");
     const [productPrice, setProductPrice] = useState(0);
 
-
-
-
     const handleSubmit = (e) => {
     e.preventDefault();
     // Add product logic here
@@ -76,11 +73,6 @@ return (
             required
         ></textarea>
         </div>
-
-
-
-
-
             {/*Boton de Submit */}
             <div className="flex justify-center">
                 <button

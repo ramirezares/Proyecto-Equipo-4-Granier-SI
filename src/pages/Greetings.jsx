@@ -1,9 +1,17 @@
+import { useContext } from 'react';
+import { OrdersContext } from '../hooks/OrdersContext';
 import { useNavigate } from "react-router-dom";
 
 function GranierPage() {
-    const order="Numero de Ordem"
-    const clientName="Dani"
+    const { getLastOrderNumber, } = useContext(OrdersContext);
+    const lastOrderNumber = getLastOrderNumber();
+
+    //para probar
+    const {getOrders} = useContext(OrdersContext);
+    console.log(getOrders());
+
     const Navigate = useNavigate();
+
     return (
 
         <div className=" max-w-3xl my-5 container mx-auto">
@@ -18,8 +26,8 @@ function GranierPage() {
                 <label className="block mb-2 text-4xl text-center font-semibold text-gray-900">
                 Pago Confirmado
                 </label>
-                <p  className="block my-4 text-lg text-center font-md text-[#AD986E]">ORDEN {order}</p>
-                <p className="text-gray-600 mb-4 text-center"> Gracias por tu compra {clientName}. Ahora que tu orden fue confirmada estaremos en contacto para la entrega.</p>
+                <p  className="block my-4 text-lg text-center font-md text-[#AD986E]">ORDEN {lastOrderNumber}</p>
+                <p className="text-gray-600 mb-4 text-center"> Gracias por tu compra. Ahora que tu orden fue confirmada estaremos en contacto para la entrega.</p>
                 
                 <div className="flex flex-wrap">
                     <button
