@@ -1,24 +1,27 @@
-import React, { useContext, useState } from 'react';
-import SearchBar from '../ui/SearchBar';
-import MenuCards from '../ui/MenuCards.jsx';
-import { MenuContext } from '../hooks/MenuContext.jsx';
-import { CartContext } from '../hooks/CartContext.jsx';
+import { useContext, useState, useEffect } from "react";
+import SearchBar from "../ui/SearchBar";
+import MenuCards from "../ui/MenuCards.jsx";
+import { MenuContext } from "../hooks/MenuContext.jsx";
+import { CartContext } from "../hooks/CartContext.jsx";
 
 const Menu = () => {
-  const {menu} = useContext(MenuContext)
-  const {addToCart} = useContext(CartContext)
+  const { menu } = useContext(MenuContext);
+  const { addProduct } = useContext(CartContext);
   const [filteredProducts, setFilteredProducts] = useState(menu);
+
+  useEffect(() => {
+    setFilteredProducts(menu);
+  }, [menu]);
 
   const handleSearch = (products) => {
     setFilteredProducts(products);
   };
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
-    console.log("Producto añadido."+product.name)
+  const handleAddToCart = (productId) => {
+    addProduct(productId);
+    console.log("Producto añadido al carrito: " + productId);
   };
 
-  //Estilar
   return (
     <div className="font-robotoBold">
       <div className="menu flex justify-center text-5xl sm:text-6xl m-12 text-beige-granier">

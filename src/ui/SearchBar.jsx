@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles/SearchBar.style.css";
 
 const SearchBar = ({ products, onSearch }) => {
@@ -28,7 +28,6 @@ const SearchBar = ({ products, onSearch }) => {
     applyFilters(value, filters);
   };
 
-
   const handleFilterChange = (category, filter) => {
     const newFilters = {
       ...filters,
@@ -40,7 +39,6 @@ const SearchBar = ({ products, onSearch }) => {
     setFilters(newFilters);
   };
 
-  // Utiliza booleanos para aplicar los filtros
   const applyFilters = (term, filters) => {
     const filteredProducts = products.filter((product) => {
       const matchesSearch = product.name
