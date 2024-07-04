@@ -71,7 +71,7 @@ const SearchBar = ({ products, onSearch }) => {
   };
 
   return (
-    <div className="search-bar-contanier">
+    <div className="search-bar-contanier text-white">
       <div className="search-bar">
         <img src="/LupaBusqueda.png" alt="" />
         <input

@@ -20,8 +20,10 @@ const Menu = () => {
 
   //Estilar
   return (
-    <div>
-      <h1>Menu Granier</h1>
+    <div className="font-robotoBold">
+      <div className="menu flex justify-center text-5xl sm:text-6xl m-12 text-beige-granier">
+      <h1>Menú Granier</h1>
+      </div>
       <SearchBar products={menu} onSearch={handleSearch} />
       <MenuCards products={filteredProducts} onAddToCart={handleAddToCart} />
     </div>
