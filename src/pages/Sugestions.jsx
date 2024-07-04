@@ -7,10 +7,13 @@ import emailjs from "@emailjs/browser";
 const Sugestions = () => {
     const { user } = useUser();
 
+  const handleSubmit = (e) => {
+    setEmail(user.email);
+    e.preventDefault;
+    const serviceId = "service_ivg35m1";
+    const templateId = "template_suvzcia";
+    const publicKey = "akedPK6z4qVAyGKbi";
 
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [concept, setConcept] = useState("");
 
 
     const handleSubmit = (e) => {
