@@ -43,3 +43,13 @@ export const deleteOrder = async (id) => {
   const orderDoc = doc(db, "orders", id);
   await deleteDoc(orderDoc);
 };
+
+//Funcion para obtener todos los pedidos
+export const getAllOrders = async () => {
+  const ordersSnapshot = await getDocs(ordersCollection);
+  const orderList = ordersSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return orderList;
+};
