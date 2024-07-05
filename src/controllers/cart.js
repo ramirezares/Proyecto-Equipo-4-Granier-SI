@@ -9,14 +9,12 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { getProductById } from "./product";
+import { getProductById } from "./product"; // Ajusta la ruta según sea necesario
 
 const cartCollection = collection(db, "carts");
 
 // Función para crear un nuevo carrito
 export const createCart = async (uid) => {
-  if (!uid) throw new Error("User ID is undefined");
-
   const newCart = {
     uidUsuario: uid,
     productos: [],
@@ -31,8 +29,7 @@ export const createCart = async (uid) => {
 
 // Función para obtener el carrito del usuario
 export const getCartByUserId = async (uid) => {
-  if (!uid) throw new Error("User ID is undefined");
-
+  if (!uid) throw new Error("UID is required to get cart"); // Asegura que uid no sea undefined
   const q = query(
     cartCollection,
     where("uidUsuario", "==", uid),
@@ -50,8 +47,6 @@ export const getCartByUserId = async (uid) => {
 
 // Función para agregar un producto al carrito
 export const addProductToCart = async (uid, productId, quantity = 1) => {
-  if (!uid) throw new Error("User ID is undefined");
-
   const cart = await getCartByUserId(uid);
   const product = await getProductById(productId);
 
@@ -86,8 +81,6 @@ export const addProductToCart = async (uid, productId, quantity = 1) => {
 
 // Función para eliminar un producto del carrito
 export const removeProductFromCart = async (uid, productId) => {
-  if (!uid) throw new Error("User ID is undefined");
-
   const cart = await getCartByUserId(uid);
   const product = cart.productos.find((p) => p.productId === productId);
 
@@ -116,8 +109,6 @@ export const removeProductFromCart = async (uid, productId) => {
 
 // Función para actualizar el estado del carrito
 export const updateCartState = async (uid, estado) => {
-  if (!uid) throw new Error("User ID is undefined");
-
   const cart = await getCartByUserId(uid);
   await updateDoc(doc(cartCollection, cart.id), { estado });
   return { ...cart, estado };

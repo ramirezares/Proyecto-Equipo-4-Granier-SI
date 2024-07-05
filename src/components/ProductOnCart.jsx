@@ -7,20 +7,15 @@ const ProductOnCart = ({ product }) => {
   const { removeProduct, updateQuantity } = useContext(CartContext);
 
   const handleRemove = () => {
-    removeProduct(product.productId);
+    removeProduct(product.name);
   };
 
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value, 10);
     if (newQuantity > 0) {
-      updateQuantity(product.productId, newQuantity);
+      updateQuantity(product.name, newQuantity);
     }
   };
-
-  // Asegúrate de que el producto es un objeto
-  if (typeof product !== "object") {
-    return null; // Return null if product is not an object
-  }
 
   const price = product.price ? Number(product.price) : 0;
   const quantity = product.quantity ? Number(product.quantity) : 0;
@@ -29,14 +24,16 @@ const ProductOnCart = ({ product }) => {
     <div className="product-on-cart">
       <div className="product-details">
         <img
-          src={product.images}
+          src={product.image || product.images} // Asegúrate de que la URL de la imagen esté en el campo correcto
           alt={product.name}
           className="product-image"
         />
         <div className="product-info">
           <h4>{product.name}</h4>
           <p>{product.description}</p>
-          <button onClick={handleRemove}>Eliminar</button>
+          <button className="remove-button" onClick={handleRemove}>
+            Eliminar
+          </button>
         </div>
       </div>
       <div className="product-pricing">
@@ -64,9 +61,9 @@ ProductOnCart.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     quantity: PropTypes.number.isRequired,
-    images: PropTypes.string.isRequired,
+    image: PropTypes.string, // Asegúrate de definir este campo correctamente
+    images: PropTypes.string, // Alternativa para el nombre del campo de la imagen
     description: PropTypes.string,
-    productId: PropTypes.string.isRequired,
   }).isRequired,
 };
 
