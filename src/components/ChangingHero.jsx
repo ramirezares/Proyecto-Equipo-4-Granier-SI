@@ -26,9 +26,8 @@ const ChangingHero = () => {
   if (isGranierPage) {
     return (
       <div className="hero granier-hero">
+        <Link to="/granier/aboutUs" >
         <img className="w-full" src="/HeroUserGranier.png" alt="" />
-        <Link to="/granier/aboutUs" className='bordered-blue-background'>
-        Conoce más
         </Link>
       </div>
     );
@@ -37,7 +36,7 @@ const ChangingHero = () => {
   if (isAboutUsPage){
     return (
       <div className="hero about-granier-hero">
-        <img src="/HeroAboutUsGranier.png" alt="" />
+        <img className="w-full" src="/HeroAboutUsGranier.png" alt="" />
       </div>
     );
   }

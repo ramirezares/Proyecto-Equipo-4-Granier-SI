@@ -3,23 +3,9 @@ import Products from "../ui/Products";
 import Promotions from "../ui/Promotions";
 import Reviews from "../ui/Reviews";
 import { Link } from "react-router-dom";
-import "./Granier.style.css"
-
-// Cargar con funciones las promos, productos y reseñas a mostrar
-const promotions = [
-  { name: "Promo #1", image: "promo1.jpg" },
-  { name: "Promo #2", image: "promo2.jpg" },
-  { name: "Promo #3", image: "promo3.jpg" },
-  { name: "Promo #4", image: "promo4.jpg" },
-  { name: "Promo #5", image: "promo5.jpg" },
-];
-
-const products = [
-  { name: "Producto #1", image: "producto1.jpg" },
-  { name: "Producto #2", image: "producto2.jpg" },
-  { name: "Producto #3", image: "producto3.jpg" },
-  { name: "Producto #4", image: "producto4.jpg" },
-];
+import "./Granier.style.css";
+import usePromotions from "../hooks/usePromotions";
+import useProducts from "../hooks/useProduct";
 
 const reviews = [
   { user: "Usuario 1", text: "Reseña del Usuario 1" },
@@ -28,24 +14,53 @@ const reviews = [
 ];
 
 const Granier = () => {
+  const {
+    promotions,
+    loading: promotionsLoading,
+    error: promotionsError,
+  } = usePromotions();
+  const {
+    products,
+    loading: productsLoading,
+    error: productsError,
+  } = useProducts();
+
   return (
-    <>
-      <div>
-        <Hero/>
-        <Promotions promotions={promotions}/>
-        <Products products={products}/>
-        <Reviews reviews={reviews}/>
-        <div className="our-contacts">
-          <p>¿Deseas comunicarte con nosotros?</p>
-          <Link to="/granier/contact" className='bordered-blue-background'>
+    <div className="bg-azul-oscuro-granier">
+      <Hero />
+      {promotionsLoading ? (
+        <p>Loading promotions...</p>
+      ) : promotionsError ? (
+        <p>Error: {promotionsError}</p>
+      ) : (
+        <Promotions promotions={promotions} />
+      )}
+      {productsLoading ? (
+        <p>Loading products...</p>
+      ) : productsError ? (
+        <p>Error: {productsError}</p>
+      ) : (
+        <Products products={products} />
+      )}
+      <Reviews reviews={reviews} />
+      <div className="our-contacts md:flex-row flex-col md:justify-around font-robotoRegular p-4 gap-4">
+        <p className="font-robotoBold md:text-xl mt-3 mx-auto">
+          ¿Deseas comunicarte con Nosotros?
+        </p>
+        <Link
+          to="/granier/contact"
+          className="rounded-full hover:bg-naranja-unimet border-0 bordered-blue-background"
+        >
           Información de contacto
-          </Link>
-          <Link className='bordered-blue-background'>
+        </Link>
+        <Link
+          to="/granier/sugestions"
+          className="rounded-full hover:bg-naranja-unimet border-0 bordered-blue-background"
+        >
           Sugerencias y reclamos
-          </Link>
-        </div>
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 

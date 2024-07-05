@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import "./styles/Products.style.css";
 
-const Products = (props) => {
+const Products = ({ products }) => {
   return (
-      <div className="products">
-        <h2>Productos Principales</h2>
-        <div className="product-cards">
-          {props.products.map((product, index) => (
-            <Card key={index} item={product} />
-          ))}
-        </div>
-        <Link className="bordered-brown-background" to="/granier/menu">
-          Ir al Menú
-        </Link>
+    <div className="products">
+      <div className="flex justify-center">
+        <h1 className="text-white font-robotoBold md:text-5xl text-3xl p-8">
+          Productos Destacados
+        </h1>
       </div>
+      <div className="products-grid">
+        {products.map((product, index) => (
+          <Card key={index} item={product} />
+        ))}
+      </div>
+    </div>
   );
 };
 

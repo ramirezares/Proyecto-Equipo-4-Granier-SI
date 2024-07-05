@@ -3,13 +3,15 @@
 const Contact = () => {
   return (
     <>
-    <div className="body mx-20">
-      <h1 style={{ color: '#34394B' }} className="text-4xl font-bold mb-4 mt-12 p-2.5">Información de contacto</h1>
+    <div className="body mx-20 font-robotoRegular m-4">
+      <div className="flex justify-center md:justify-start font-robotoBold">
+      <h1 style={{ color: '#34394B' }} className=" md:text-4xl text-3xl font-bold mb-4 mt-12 p-2.5">Información de contacto</h1>
+      </div>
       <div className="container mx-auto p-4">
         <div className="flex flex-wrap justify-center mb-4">
-            <div className="information w-1/2 pr-4">
+            <div className="information w-40' pr-4">
               
-              <div className="flex justify-left mb-4">
+              <div className="flex justify-left mb-4 mx-auto">
                 <div id="facebook-logo" className="mr-4 mb-4">
                   <img src="/Facebook.png" alt="facebook-logo" />
                 </div>
@@ -24,9 +26,9 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="flex justify-left mb-4">
+              <div className="flex justify-left sm:m-0 mb-4">
                     <div className="flex items-center mb-2">
-                      <img src="/Correo.png" alt="" className="mr-2"/>
+                      <img src="/Correo.png" alt="" className="w-8 sm:w-auto mr-2"/>
                       <p style={{ color: '#34394B' }} className="text-2xl leading-relaxed text-gray-600 font-semibold">contacto@graniervzla.com</p>
                     </div>
               </div>
@@ -40,8 +42,8 @@ const Contact = () => {
               
             </div>
 
-            <div className="message w-1/2 pl-4">
-              <p style={{ color: '#34394B' }} className="text-2xl leading-relaxed text-gray-600 font-semibold">
+            <div className="message sm:w-1/2 pl-4">
+              <p style={{ color: '#34394B' }} className="text-xl leading-relaxed text-gray-600 font-semibold">
                 Podrás contactarnos a través de cualquiera de los siguientes medios
                 de comunicación, te atenderemos a la brevedad
               </p>

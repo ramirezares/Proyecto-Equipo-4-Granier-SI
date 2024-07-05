@@ -1,40 +1,51 @@
-import React, { useState } from 'react';
-import SearchBar from '../ui/SearchBar';
-import MenuCards from '../ui/MenuCards.jsx';
-
-const initialProducts = [
-  { name: 'Cafe', description: 'Caliente', price: 2.5, images: '*', foodPreference: '', kindProduct: 'Bebida', kindFood: 'Merienda' },
-  { name: 'Pan', description: 'Fresco', price: 5.99, images: '*', foodPreference: 'Vegano', kindProduct: 'Platillo', kindFood: 'Desayuno' },
-  { name: 'Cafe', description: 'Caliente', price: 2.5, images: '*', foodPreference: '', kindProduct: 'Bebida', kindFood: 'Merienda' },
-  { name: 'Pan', description: 'Fresco', price: 5.99, images: '*', foodPreference: 'Vegano', kindProduct: 'Platillo', kindFood: 'Desayuno' },
-  { name: 'Cafe', description: 'Caliente', price: 2.5, images: '*', foodPreference: '', kindProduct: 'Bebida', kindFood: 'Merienda' },
-  { name: 'Pan', description: 'Fresco', price: 5.99, images: '*', foodPreference: 'Vegano', kindProduct: 'Platillo', kindFood: 'Desayuno' },
-  // Momentaneo para probar
-  //FoodPreference: Vegano, vegetariano o libre de gluten (Los de registro, ver si esos son los nombres)
-  //KindProduct: Bebida, platillo o comestible
-  //KindFood: Desayuno, almuerzo o cena
-];
+import { useContext, useState, useEffect } from "react";
+import SearchBar from "../ui/SearchBar";
+import MenuCards from "../ui/MenuCards.jsx";
+import { MenuContext } from "../hooks/MenuContext.jsx";
+import { CartContext } from "../hooks/CartContext.jsx";
 
 const Menu = () => {
-  const [filteredProducts, setFilteredProducts] = useState(initialProducts);
-  const [cart, setCart] = useState([]); 
-  // Cambiar. Cuando inicie la app se debe indicar si hay productos ya guardados.
-  //Se puede hacer una funcion para darle el valor inicial a useState
+  const { menu } = useContext(MenuContext);
+  const { addProduct } = useContext(CartContext);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    // Asegurarse de que foodPreference sea un string antes de establecer los productos filtrados
+    const processedMenu = menu.map((product) => ({
+      ...product,
+      foodPreference: formatFoodPreference(product.foodPreference),
+    }));
+    setFilteredProducts(processedMenu);
+  }, [menu]);
 
   const handleSearch = (products) => {
-    setFilteredProducts(products);
+    const processedProducts = products.map((product) => ({
+      ...product,
+      foodPreference: formatFoodPreference(product.foodPreference),
+    }));
+    setFilteredProducts(processedProducts);
   };
 
-  const handleAddToCart = (product) => {
-    console.log("Producto añadido."+product.name)
-    setCart([...cart, product]); //Hacer la funcion para agregar al carrito
+  const handleAddToCart = (productId) => {
+    addProduct(productId);
+    console.log("Producto añadido al carrito: " + productId);
   };
 
-  //Estilar
+  const formatFoodPreference = (foodPreference) => {
+    if (typeof foodPreference === "object") {
+      return Object.keys(foodPreference)
+        .filter((key) => foodPreference[key])
+        .join(", ");
+    }
+    return foodPreference;
+  };
+
   return (
-    <div>
-      <h1>Menu Granier</h1>
-      <SearchBar products={initialProducts} onSearch={handleSearch} />
+    <div className="font-robotoBold">
+      <div className="menu flex justify-center text-5xl sm:text-6xl m-12 text-beige-granier">
+        <h1>Menú Granier</h1>
+      </div>
+      <SearchBar products={menu} onSearch={handleSearch} />
       <MenuCards products={filteredProducts} onAddToCart={handleAddToCart} />
     </div>
   );

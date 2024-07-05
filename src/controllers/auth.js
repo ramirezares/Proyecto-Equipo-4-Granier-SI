@@ -19,31 +19,48 @@ import { auth, googleProvider, facebookProvider } from "../firebase";
 import { db } from "../firebase";
 
 async function addUserToFirestore(user, additionalData = {}) {
-  const number = user.phoneNumber || "04120000000";
-  await addDoc(collection(db, "users"), {
+  const userRef = doc(db, "users", user.uid);
+  const userData = {
     id: user.uid,
-    firstName: user.displayName || "",
-    lastName: "",
+    firstName: user.displayName || additionalData.firstName || "",
+    lastName: additionalData.lastName || "",
     email: user.email,
     userRole: "1",
-    number: number,
-    username: "",
+    number: user.phoneNumber || additionalData.phone || "04120000000",
+    username: additionalData.username || "",
     image: "",
-    career: "",
-    occupation: "",
-    foodPreference: [],
+    career: additionalData.career || "",
+    occupation: additionalData.occupation || "",
+    foodPreference: additionalData.foodPreference || [],
     purchases: [],
     ...additionalData,
-  });
+  };
+  await addDoc(userRef, userData, { merge: true });
 }
 
 export async function signUpGoogle() {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    const additionalInfo = getAdditionalUserInfo(result);
-    if (additionalInfo.isNewUser) {
-      await addUserToFirestore(result.user);
+
+    const adittionalInfo = getAdditionalUserInfo(result);
+
+    if (adittionalInfo.isNewUser == true) {
+      let number = result.user.phoneNumber;
+      if (number == null) {
+        number = "04120000000";
+      }
+      await addDoc(collection(db, "users"), {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        userRole: "1",
+        number: number,
+        image: result.user.photoURL,
+        carrer: "",
+        agrupations: [],
+      });
     }
+
     return result.user;
   } catch (error) {
     console.error(error);
@@ -54,12 +71,62 @@ export async function signUpFacebook() {
   try {
     const result = await signInWithPopup(auth, facebookProvider);
     const additionalInfo = getAdditionalUserInfo(result);
-    if (additionalInfo.isNewUser) {
-      await addUserToFirestore(result.user);
+
+    if (additionalInfo.isNewUser === true) {
+      let number = result.user.phoneNumber;
+      if (number == null) {
+        number = "04120000000";
+      }
+      await addDoc(collection(db, "users"), {
+        id: result.user.uid,
+        name: result.user.displayName,
+        email: result.user.email,
+        userRole: "1",
+        number: number,
+        image: result.user.photoURL,
+        career: "",
+        agrupations: [],
+      });
     }
+
     return result.user;
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function registerWithCredentials(
+  firstName,
+  lastName,
+  username,
+  email,
+  password,
+  number,
+  career,
+  occupation,
+  purchases,
+  foodPreference
+) {
+  try {
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    await addUserToFirestore(user, {
+      firstName,
+      lastName,
+      username,
+      number,
+      career,
+      occupation,
+      purchases,
+      foodPreference,
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 }
 
@@ -92,41 +159,6 @@ export async function logOut() {
 export async function loginWithCredentials(email, password) {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    return user;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-export async function registerWithCredentials(
-  firstName,
-  lastName,
-  username,
-  email,
-  password,
-  number,
-  career,
-  occupation,
-  purchases,
-  foodPreference
-) {
-  try {
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    await addUserToFirestore(user, {
-      firstName,
-      lastName,
-      username,
-      number,
-      career,
-      occupation,
-      purchases,
-      foodPreference,
-    });
     return user;
   } catch (error) {
     console.error(error);

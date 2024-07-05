@@ -12,12 +12,12 @@ const ChangingFooter = () => {
   if (isGranierPage) {
     return (
       <footer className="text-white ">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-naranja-unimet py-6">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4  bg-naranja-unimet py-6">
         <h1
           className=" mx-auto lg:text-1xl  md:mb-0 mb-6 lg:leading-normal font-semibold
          md:w-2/5"
         >
-          <p>© GRANIER VENEZUELA | Derechos reservados</p>
+          <p>© GRANIER VENEZUELA | Derechos reservados</p>s
           <p>
             Página Principal de la Universidad Metropolitana:{" "}
           </p>

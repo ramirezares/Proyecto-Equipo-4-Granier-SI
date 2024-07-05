@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles/SearchBar.style.css";
 
 const SearchBar = ({ products, onSearch }) => {
@@ -37,7 +37,6 @@ const SearchBar = ({ products, onSearch }) => {
       },
     };
     setFilters(newFilters);
-    // No aplicar filtros automáticamente, esperar a que el usuario haga clic en "Aplicar"
   };
 
   const applyFilters = (term, filters) => {
@@ -70,7 +69,7 @@ const SearchBar = ({ products, onSearch }) => {
   };
 
   return (
-    <div className="search-bar-contanier">
+    <div className="search-bar-container text-white">
       <div className="search-bar">
         <img src="/LupaBusqueda.png" alt="" />
         <input

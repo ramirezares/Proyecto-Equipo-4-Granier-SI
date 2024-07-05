@@ -14,29 +14,40 @@ const Reseñas = (props) => {
   };
 
   return (
-    <div className="reseñas">
-      <div className="reseñas-content">
-      <h2>Sección de Reseñas</h2>
-        <ReviewCard
-          review={props.reviews[currentReview]}
-          onNext={handleNext}
-          onPrev={handlePrev}
-        />
+      <div className="font-robotoRegular bg-azul-producto">
+        <div className="bg-azul-producto font-robotoBold  text-white text-xl pt-4 pl-6">
+        <h2 className="">Sección de Reseñas</h2>
         </div>
-        <div className="reseña-form">
-          <div className="avatar">
-            <img src="/Logoperfilusuarioengranier.png" alt="" />
-            <p>Nombre de usuario</p>
-          </div>
-          Deja tu reseña:
-          <textarea
-            placeholder="Deja tu reseña:"
-            className="form-textarea"
-          ></textarea>
-          <button className="form-button">Enviar Reseña</button>
+        
+        <div className="mx-auto reseñas md:flex-row w-80 md:w-full flex-col ">
+          <div className="reseñas-content  md:w-full">
+            <ReviewCard
+              review={props.reviews[currentReview]}
+              onNext={handleNext}
+              onPrev={handlePrev}
+            />
+            </div>
+            <div className="reseña-form sm:ml-12 w-full">
+              <div className="flex w-full ">
+               <div className="avatar w-14">
+                  <img src="/Logoperfilusuarioengranier.png" alt="" />
+               </div>
+               <div className="pt-4 pl-4">
+                <p>Nombre de usuario</p>
+               </div>
+              </div>
+              <div className=" flex w-full mb-1 ml-12">
+                Deja tu reseña:
+              </div>
+              <textarea
+                placeholder="Deja tu reseña:"
+                className="form-textarea"
+              ></textarea>
+              <button className="form-button rounded-full">Enviar Reseña</button>
+            </div>
         </div>
-    </div>
-  );
+      </div>
+    );
 };
 
 export default Reseñas;
