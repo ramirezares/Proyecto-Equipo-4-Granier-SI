@@ -1,21 +1,29 @@
-// components/ProductOnCart.js
-import React, { useContext } from "react";
+import { useContext } from "react";
+import PropTypes from "prop-types";
 import { CartContext } from "../hooks/CartContext";
 import "./ProductOnCart.style.css";
 
 const ProductOnCart = ({ product }) => {
-  const { removeFromCart, updateQuantity } = useContext(CartContext);
+  const { removeProduct, updateQuantity } = useContext(CartContext);
 
   const handleRemove = () => {
-    removeFromCart(product.name);
+    removeProduct(product.productId);
   };
 
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value, 10);
     if (newQuantity > 0) {
-      updateQuantity(product.name, newQuantity);
+      updateQuantity(product.productId, newQuantity);
     }
   };
+
+  // Asegúrate de que el producto es un objeto
+  if (typeof product !== "object") {
+    return null; // Return null if product is not an object
+  }
+
+  const price = product.price ? Number(product.price) : 0;
+  const quantity = product.quantity ? Number(product.quantity) : 0;
 
   return (
     <div className="product-on-cart">
@@ -32,12 +40,12 @@ const ProductOnCart = ({ product }) => {
         </div>
       </div>
       <div className="product-pricing">
-        <p className="product-price">${product.price.toFixed(2)}</p>
+        <p className="product-price">${price.toFixed(2)}</p>
       </div>
       <div>
         <input
           type="number"
-          value={product.quantity}
+          value={quantity}
           min="1"
           max="10"
           onChange={handleQuantityChange}
@@ -45,12 +53,21 @@ const ProductOnCart = ({ product }) => {
         />
       </div>
       <div>
-        <p className="product-total">
-          ${(product.price * product.quantity).toFixed(2)}
-        </p>
+        <p className="product-total">${(price * quantity).toFixed(2)}</p>
       </div>
     </div>
   );
+};
+
+ProductOnCart.propTypes = {
+  product: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    quantity: PropTypes.number.isRequired,
+    images: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    productId: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductOnCart;

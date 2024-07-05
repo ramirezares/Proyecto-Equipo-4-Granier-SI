@@ -1,84 +1,36 @@
 import { useParams } from "react-router-dom";
 import ImageGallery from "../components/ImageGallery.jsx";
 import "./ProductPage.style.css";
-import { useState } from "react";
-
-const initialProducts = [
-  {
-    name: "Cafe",
-    description: "Caliente",
-    status: "Disponible",
-    price: 2.5,
-    images: ["/Mapa 1.png", "/Mapa 2.png"],
-    foodPreference: "",
-    kindProduct: "Bebida",
-    kindFood: "Merienda",
-  },
-  {
-    name: "Pan",
-    description: "Fresco",
-    status: "Disponible",
-    price: 5.99,
-    images: [],
-    foodPreference: "Vegano",
-    kindProduct: "Platillo",
-    kindFood: "Desayuno",
-  },
-  {
-    name: "Cafe",
-    description: "Caliente",
-    status: "Disponible",
-    price: 2.5,
-    images: [],
-    foodPreference: "",
-    kindProduct: "Bebida",
-    kindFood: "Merienda",
-  },
-  {
-    name: "Pan",
-    description: "Fresco",
-    status: "Disponible",
-    price: 5.99,
-    images: [],
-    foodPreference: "Vegano",
-    kindProduct: "Platillo",
-    kindFood: "Desayuno",
-  },
-  {
-    name: "Cafe",
-    description: "Caliente",
-    status: "Disponible",
-    price: 2.5,
-    images: [],
-    foodPreference: "",
-    kindProduct: "Bebida",
-    kindFood: "Merienda",
-  },
-  {
-    name: "Pan",
-    description: "Fresco",
-    status: "Disponible",
-    price: 5.99,
-    images: [],
-    foodPreference: "Vegano",
-    kindProduct: "Platillo",
-    kindFood: "Desayuno",
-  },
-];
+import { useEffect, useState } from "react";
+import { getProductByName } from "../controllers/product";
+import { useCart } from "../hooks/useCart";
 
 const ProductPage = () => {
   const { productName } = useParams(); // Obtiene el nombre del producto de la URL
-  console.log(productName);
-  const product = initialProducts.find((p) => p.name === productName); // Encuentra el producto
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const { addProduct } = useCart();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const productData = await getProductByName(productName);
+      setProduct(productData);
+    };
+
+    fetchProduct();
+  }, [productName]);
 
   if (!product) {
     return <div>Producto no encontrado</div>;
   }
 
-  const [quantity, setQuantity] = useState(1);
-
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));
+  };
+
+  const handleAddToCart = () => {
+    addProduct(product.id, quantity);
+    console.log("Producto añadido al carrito: " + product.name);
   };
 
   return (
@@ -110,9 +62,16 @@ const ProductPage = () => {
         </div>
         <div className="details">
           <p className="label font-bold">Descripción:</p>
-          <p className="description border-2 pb-20 rounded-lg">{product.description}</p>
+          <p className="description border-2 pb-20 rounded-lg">
+            {product.description}
+          </p>
           <div className="justify-center flex mt-20 mb-20">
-            <button className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-beige-granier hover:bg-beige-granier"> + Agregar al carrito</button>
+            <button
+              className="border-2 rounded-lg p-0.5 pl-12 pr-12 border-beige-granier hover:bg-beige-granier"
+              onClick={handleAddToCart}
+            >
+              + Agregar al carrito
+            </button>
           </div>
         </div>
       </div>

@@ -5,7 +5,15 @@ import { Link } from "react-router-dom";
 import "./ShoppingCart.style.css";
 
 const ShoppingCart = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, loading, error } = useContext(CartContext);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
