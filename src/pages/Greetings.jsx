@@ -6,10 +6,6 @@ function GranierPage() {
     const { getLastOrderNumber, } = useContext(OrdersContext);
     const lastOrderNumber = getLastOrderNumber();
 
-    //para probar
-    const {getOrders} = useContext(OrdersContext);
-    console.log(getOrders());
-
     const Navigate = useNavigate();
 
     return (

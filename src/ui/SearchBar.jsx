@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./styles/SearchBar.style.css";
 
+
 const SearchBar = ({ products, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({

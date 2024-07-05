@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-import { getUserData } from "../controllers/auth"; // Asegúrate de ajustar la ruta si es necesario
+import { getUserData } from "../controllers/auth";
 
 export function useUser() {
   const { user, setUser } = useContext(UserContext);

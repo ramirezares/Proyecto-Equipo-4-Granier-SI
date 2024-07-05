@@ -50,14 +50,15 @@ const MenuCard = ({ product, onAddToCart }) => {
 
 MenuCard.propTypes = {
   product: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    images: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    images: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     foodPreference: PropTypes.string,
-    kindProduct: PropTypes.string.isRequired,
-    kindFood: PropTypes.string.isRequired,
-  }).isRequired,
+    kindProduct: PropTypes.string,
+    kindFood: PropTypes.string,
+  }),
+  onAddToCart: PropTypes.func,
 };
 
 export default MenuCard;

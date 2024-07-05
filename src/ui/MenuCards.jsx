@@ -14,7 +14,7 @@ const MenuCards = ({ products, onAddToCart }) => {
       ) : (
         <div>
           <p>
-            No se encontraron productos que tengan los parametros de búsqueda.
+            No se encontraron productos que tengan los parámetros de búsqueda.
           </p>
         </div>
       )}
@@ -25,16 +25,19 @@ const MenuCards = ({ products, onAddToCart }) => {
 MenuCards.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      images: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
-        .isRequired,
-      foodPreference: PropTypes.string,
-      kindProduct: PropTypes.string.isRequired,
-      kindFood: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.number,
+      images: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+      foodPreference: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+      ]),
+      kindProduct: PropTypes.string,
+      kindFood: PropTypes.string,
     })
-  ).isRequired,
+  ),
+  onAddToCart: PropTypes.func,
 };
 
 export default MenuCards;

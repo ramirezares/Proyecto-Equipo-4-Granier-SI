@@ -96,7 +96,7 @@ const ChangingNavBar = () => {
             <Link to="/">
               <img className="w-24" src="/Unimetmetroeatsblanco.png" alt="" />
             </Link>
-            <Link to="/granier">
+            <Link to="/granier/homeEmployee">
               <img
                 className="w-40"
                 src="/Granieradministradorlogo.png"
