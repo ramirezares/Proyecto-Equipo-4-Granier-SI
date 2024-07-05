@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { addProduct } from "../controllers/product";
+import { addPromotion } from "../controllers/promotion"; // Asegúrate de ajustar la ruta según sea necesario
 import { uploadImage } from "../controllers/image";
 
 const AddProduct = () => {
@@ -23,8 +24,8 @@ const AddProduct = () => {
         imageUrl = uploadResult.url;
       }
 
-      // Crear el producto
-      const newProduct = {
+      // Crear el objeto nuevo
+      const newItem = {
         name: productName,
         description: productDescription,
         price: parseFloat(productPrice),
@@ -35,10 +36,16 @@ const AddProduct = () => {
         foodPreference: checkboxGroup,
       };
 
-      const productId = await addProduct(newProduct);
-      console.log("Producto añadido con ID:", productId);
+      // Crear el producto o promoción
+      if (radioGroup1 === "product") {
+        const productId = await addProduct(newItem);
+        console.log("Producto añadido con ID:", productId);
+      } else if (radioGroup1 === "promotion") {
+        const promotionId = await addPromotion(newItem);
+        console.log("Promoción añadida con ID:", promotionId);
+      }
     } catch (error) {
-      console.error("Error al añadir el producto:", error);
+      console.error("Error al añadir el producto o promoción:", error);
     }
   };
 
@@ -75,7 +82,7 @@ const AddProduct = () => {
                 onChange={(e) => setProductName(e.target.value)}
                 required
               />
-              <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Nombre del Producto
               </label>
             </div>
@@ -160,6 +167,7 @@ const AddProduct = () => {
                     id="radio1-1"
                     name="radioGroup1"
                     value="promotion"
+                    checked={radioGroup1 === "promotion"}
                     onChange={(e) => setRadioGroup1(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Promo</label>
@@ -172,6 +180,7 @@ const AddProduct = () => {
                     id="radio1-2"
                     name="radioGroup1"
                     value="product"
+                    checked={radioGroup1 === "product"}
                     onChange={(e) => setRadioGroup1(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Producto</label>
@@ -192,6 +201,7 @@ const AddProduct = () => {
                     id="radio3-1"
                     name="radioGroup3"
                     value="breakfast"
+                    checked={radioGroup3 === "breakfast"}
                     onChange={(e) => setRadioGroup3(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Desayuno</label>
@@ -204,6 +214,7 @@ const AddProduct = () => {
                     id="radio3-2"
                     name="radioGroup3"
                     value="lunch"
+                    checked={radioGroup3 === "lunch"}
                     onChange={(e) => setRadioGroup3(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Almuerzo</label>
@@ -216,6 +227,7 @@ const AddProduct = () => {
                     id="radio3-3"
                     name="radioGroup3"
                     value="dinner"
+                    checked={radioGroup3 === "dinner"}
                     onChange={(e) => setRadioGroup3(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Cena</label>
@@ -228,6 +240,7 @@ const AddProduct = () => {
                     id="radio3-4"
                     name="radioGroup3"
                     value="dessert"
+                    checked={radioGroup3 === "dessert"}
                     onChange={(e) => setRadioGroup3(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Postre</label>
@@ -250,6 +263,7 @@ const AddProduct = () => {
                     id="radio2-1"
                     name="radioGroup2"
                     value="drink"
+                    checked={radioGroup2 === "drink"}
                     onChange={(e) => setRadioGroup2(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Bebida</label>
@@ -259,10 +273,11 @@ const AddProduct = () => {
                 <div className="w-full md:w-1/2 px-3 mb-5">
                   <input
                     type="radio"
-                    id="radio3-2"
-                    name="radioGroup3"
+                    id="radio2-2"
+                    name="radioGroup2"
                     value="food"
-                    onChange={(e) => setRadioGroup3(e.target.value)}
+                    checked={radioGroup2 === "food"}
+                    onChange={(e) => setRadioGroup2(e.target.value)}
                   />
                   <label className="ml-2 text-sm text-gray-600">Comida</label>
                 </div>
