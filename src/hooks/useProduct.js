@@ -4,7 +4,7 @@ import {
   addProduct,
   updateProduct,
   deleteProduct,
-} from "../controllers/productController";
+} from "../controllers/product";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
