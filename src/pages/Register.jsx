@@ -34,9 +34,13 @@ const Register = () => {
         [], // Purchases, puedes modificar esto si tienes datos para agregar aquí
         foodPreferences // Preferencias Alimentarias
       );
-      setUser(newUser);
-      console.log("User registered successfully:", newUser);
-      navigate("/");
+      if (newUser) {
+        setUser(newUser);
+        console.log("User registered successfully:", newUser);
+        navigate("/");
+      } else {
+        console.error("Failed to register user.");
+      }
     } catch (error) {
       console.error("Error registering user:", error);
     }
@@ -155,12 +159,12 @@ const Register = () => {
                       type="text"
                       id="phone"
                       className="block py-2.5 ps-6 pe-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                      pattern="(+58)[0-9]{10}"
+                      pattern="\+58[0-9]{10}"
                       placeholder=" "
                       onChange={(e) => setPhone(e.target.value)}
                       required
                     />
-                    <label className="absolute  text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                    <label className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                       Número de Teléfono
                     </label>
                   </div>
