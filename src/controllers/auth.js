@@ -8,7 +8,7 @@ import {
 import {
   doc,
   collection,
-  addDoc,
+  setDoc,
   getDocs,
   query,
   where,
@@ -35,28 +35,30 @@ async function addUserToFirestore(user, additionalData = {}) {
     purchases: [],
     ...additionalData,
   };
-  await addDoc(userRef, userData, { merge: true });
+  console.log("Adding user to Firestore:", userData);
+  await setDoc(userRef, userData, { merge: true });
+  console.log("User added to Firestore successfully.");
 }
 
 export async function signUpGoogle() {
   try {
     const result = await signInWithPopup(auth, googleProvider);
 
-    const adittionalInfo = getAdditionalUserInfo(result);
+    const additionalInfo = getAdditionalUserInfo(result);
 
-    if (adittionalInfo.isNewUser == true) {
+    if (additionalInfo.isNewUser == true) {
       let number = result.user.phoneNumber;
       if (number == null) {
         number = "04120000000";
       }
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", result.user.uid), {
         id: result.user.uid,
         name: result.user.displayName,
         email: result.user.email,
         userRole: "1",
         number: number,
         image: result.user.photoURL,
-        carrer: "",
+        career: "",
         agrupations: [],
       });
     }
@@ -77,7 +79,7 @@ export async function signUpFacebook() {
       if (number == null) {
         number = "04120000000";
       }
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", result.user.uid), {
         id: result.user.uid,
         name: result.user.displayName,
         email: result.user.email,
@@ -125,7 +127,11 @@ export async function registerWithCredentials(
     });
     return user;
   } catch (error) {
-    console.error(error);
+    if (error.code === "auth/email-already-in-use") {
+      console.error("Email already in use.");
+    } else {
+      console.error(error);
+    }
     return null;
   }
 }
