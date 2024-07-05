@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../hooks/CartContext"; // Ajusta la ruta según sea necesario
 import "./MenuCard.style.css";
 
-const MenuCard = ({ product, onAddToCart }) => {
+const MenuCard = ({ product }) => {
   const pathname = window.location.pathname;
+  const { addProduct } = useContext(CartContext); // Usamos el hook del contexto del carrito
   let url = `/granier/menu/product/${product.name}`;
 
   if (pathname.includes("employee")) {
@@ -14,6 +17,10 @@ const MenuCard = ({ product, onAddToCart }) => {
   const productImage = Array.isArray(product.images)
     ? product.images[0]
     : product.images;
+
+  const handleAddToCart = async () => {
+    await addProduct(product.id); // Asegúrate de pasar el ID del producto
+  };
 
   return (
     <div className="product-card bg-white rounded-lg p-2.5 w-full max-w-60 text-white font-bold shadow-xl">
@@ -35,9 +42,7 @@ const MenuCard = ({ product, onAddToCart }) => {
           </Link>
           <button
             className="add-button bg-azul-oscuro-granier p-1 ml-2 rounded-lg w-fit hover:bg-beige-granier"
-            onClick={() => {
-              onAddToCart(product.id);
-            }}
+            onClick={handleAddToCart}
           >
             +
           </button>
@@ -50,15 +55,12 @@ const MenuCard = ({ product, onAddToCart }) => {
 
 MenuCard.propTypes = {
   product: PropTypes.shape({
-    name: PropTypes.string,
-    description: PropTypes.string,
-    price: PropTypes.number,
-    images: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    foodPreference: PropTypes.string,
-    kindProduct: PropTypes.string,
-    kindFood: PropTypes.string,
-  }),
-  onAddToCart: PropTypes.func,
+    id: PropTypes.string.isRequired, // Asegúrate de que el ID del producto se proporciona
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    images: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  }).isRequired,
 };
 
 export default MenuCard;

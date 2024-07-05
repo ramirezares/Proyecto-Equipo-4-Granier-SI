@@ -9,7 +9,7 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { getProductById } from "./productController"; // Ajusta la ruta según sea necesario
+import { getProductById } from "./product"; // Ajusta la ruta según sea necesario
 
 const cartCollection = collection(db, "carts");
 
@@ -29,6 +29,7 @@ export const createCart = async (uid) => {
 
 // Función para obtener el carrito del usuario
 export const getCartByUserId = async (uid) => {
+  if (!uid) throw new Error("UID is required to get cart"); // Asegura que uid no sea undefined
   const q = query(
     cartCollection,
     where("uidUsuario", "==", uid),
@@ -45,7 +46,7 @@ export const getCartByUserId = async (uid) => {
 };
 
 // Función para agregar un producto al carrito
-export const addProductToCart = async (uid, productId) => {
+export const addProductToCart = async (uid, productId, quantity = 1) => {
   const cart = await getCartByUserId(uid);
   const product = await getProductById(productId);
 
@@ -55,20 +56,22 @@ export const addProductToCart = async (uid, productId) => {
     updatedCart = {
       ...cart,
       productos: cart.productos.map((p) =>
-        p.productId === productId ? { ...p, quantity: p.quantity + 1 } : p
+        p.productId === productId
+          ? { ...p, quantity: p.quantity + quantity }
+          : p
       ),
-      cantidadProductos: cart.cantidadProductos + 1,
-      subtotal: cart.subtotal + product.price,
+      cantidadProductos: cart.cantidadProductos + quantity,
+      subtotal: cart.subtotal + product.price * quantity,
     };
   } else {
     updatedCart = {
       ...cart,
       productos: [
         ...cart.productos,
-        { productId, quantity: 1, price: product.price },
+        { productId, quantity, price: product.price },
       ],
-      cantidadProductos: cart.cantidadProductos + 1,
-      subtotal: cart.subtotal + product.price,
+      cantidadProductos: cart.cantidadProductos + quantity,
+      subtotal: cart.subtotal + product.price * quantity,
     };
   }
 
