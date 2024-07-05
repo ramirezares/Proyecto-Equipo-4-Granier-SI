@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import {
+  createCart,
   getCartByUserId,
   addProductToCart,
   removeProductFromCart,
-  updateCartState,
-  createCart,
-} from "../controllers/cartController"; // Ajusta la ruta según sea necesario
+} from "../controllers/cart";
 import { useUser } from "./useUser";
 
 export const useCart = () => {
@@ -16,61 +15,67 @@ export const useCart = () => {
 
   useEffect(() => {
     const fetchCart = async () => {
-      if (user) {
-        try {
-          const existingCart = await getCartByUserId(user.uid);
-          if (existingCart.estado === "activo") {
-            setCart(existingCart);
-          } else {
-            const newCart = await createCart(user.uid);
-            setCart(newCart);
+      try {
+        setLoading(true);
+        if (user && user.id) {
+          let fetchedCart = await getCartByUserId(user.id);
+          if (!fetchedCart) {
+            fetchedCart = await createCart(user.id);
           }
-          setLoading(false);
-        } catch (err) {
-          setError(err.message);
-          setLoading(false);
+          setCart(fetchedCart);
         }
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchCart();
   }, [user]);
 
-  const addProduct = async (productId) => {
+  const addProduct = async (productId, quantity = 1) => {
     try {
-      await addProductToCart(cart.uidUsuario, productId);
-      const updatedCart = await getCartByUserId(cart.uidUsuario);
+      setLoading(true);
+      const updatedCart = await addProductToCart(user.id, productId, quantity);
       setCart(updatedCart);
     } catch (err) {
-      setError(err.message);
+      setError(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   const removeProduct = async (productId) => {
     try {
-      await removeProductFromCart(cart.uidUsuario, productId);
-      const updatedCart = await getCartByUserId(cart.uidUsuario);
+      setLoading(true);
+      const updatedCart = await removeProductFromCart(user.id, productId);
       setCart(updatedCart);
     } catch (err) {
-      setError(err.message);
+      setError(err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const completeCart = async () => {
+  const updateQuantity = async (productId, quantity) => {
     try {
-      await updateCartState(cart.uidUsuario, "completado");
-      setCart(null); // Clear cart after completion
+      setLoading(true);
+      const updatedCart = await addProductToCart(user.id, productId, quantity);
+      setCart(updatedCart);
     } catch (err) {
-      setError(err.message);
+      setError(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return {
     cart,
-    loading,
-    error,
     addProduct,
     removeProduct,
-    completeCart,
+    updateQuantity,
+    loading,
+    error,
   };
 };

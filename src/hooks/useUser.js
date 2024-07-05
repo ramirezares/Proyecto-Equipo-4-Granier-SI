@@ -4,7 +4,7 @@ import { getUserData } from "../controllers/auth";
 
 export function useUser() {
   const { user, setUser } = useContext(UserContext);
-  const [userData, setUserData] = useState(user);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
